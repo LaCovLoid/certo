@@ -1,0 +1,37 @@
+{
+  "menus": [
+    {
+      "name": "iPhone",
+      "url": "/iphone",
+      "submenu": []
+    },
+    {
+      "name": "Android",
+      "url": "/android",
+      "submenu": []
+    },
+    {
+      "name": "Help",
+      "url": "/help",
+      "submenu": []
+    },
+    {
+      "name": "Company",
+      "url": "/company",
+      "submenu": [
+        {
+          "name": "item1",
+          "url": "/company/item1"
+        },
+        {
+          "name": "item2",
+          "url": "/company/item2"
+        },
+        {
+          "name": "item3",
+          "url": "/company/item3"
+        }
+      ]
+    }
+  ]
+}

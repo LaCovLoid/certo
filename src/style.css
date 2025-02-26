@@ -1,0 +1,33 @@
+:root {
+  background-color: #ff8a8a;
+}
+
+a {
+  font-weight: 500;
+  color: #000000;
+  text-decoration: inherit;
+}
+a:hover {
+  color: aqua;
+}
+
+body {
+  margin: 0;
+  place-items: center;
+  min-width: 400px;
+}
+
+#app {
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+}

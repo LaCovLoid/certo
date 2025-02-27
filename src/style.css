@@ -1,20 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
 :root {
   background-color: #ff8a8a;
 }
 
-a {
-  font-weight: 500;
-  color: #000000;
-  text-decoration: inherit;
-}
-a:hover {
-  color: aqua;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  place-items: center;
   min-width: 400px;
+  margin: 0;
+
+  font-family: "Inter", sans-serif;
+  place-items: center;
 }
 
 #app {

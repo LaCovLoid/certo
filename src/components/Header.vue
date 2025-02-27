@@ -1,14 +1,16 @@
 <template>
-  <div class="menu-container">
+  <div class="header-container">
     <div class="left">
       <img class="logo" src="../assets/images/logo_certo.png" />
     </div>
     <div class="right">
-      <div class="menu-item">Menu Item 1</div>
-      <div class="menu-item">Menu Item 2</div>
-      <div class="menu-item">Menu Item 3</div>
-      <div class="menu-item">Menu Item 4</div>
-      <div class="menu-item">Menu Item 5</div>
+      <div class="menu-list">
+        <div class="menu-item">iPhone</div>
+        <div class="menu-item">Android</div>
+        <div class="menu-item">Help</div>
+        <div class="menu-item">Company ∨</div>
+      </div>
+      <div class="sign-in-bt">sign in</div>
     </div>
   </div>
 </template>
@@ -21,7 +23,7 @@
 </script>
 
 <style lang="scss" scoped>
-.menu-container {
+.header-container {
   max-width: 1440px;
   width: 100%;
   height: 102px;
@@ -29,24 +31,46 @@
   display: flex;
   margin: 0 auto;
 
-  background-color: blue;
+  background-color: #f3f8ff;
 
   > .left {
-    width: 50%;
-
     display: flex;
 
     > .logo {
       width: 157px;
       height: 54px;
-      margin: auto 0;
-      margin-left: 100px;
+      margin: auto 100px;
 
       object-fit: contain;
     }
   }
-  .right {
+  > .right {
+    width: 100%;
+
     display: flex;
+    justify-content: flex-end;
+
+    font-size: 19px;
+    font-weight: 800;
+
+    > .menu-list {
+      display: flex;
+      justify-content: flex-end;
+
+      > .menu-item {
+        margin: auto 40px auto 0;
+      }
+    }
+
+    > .sign-in-bt {
+      padding: 14px 20px;
+      margin: auto 130px auto 50px;
+
+      color: #ffffff;
+      font-size: 18px;
+      background-color: #4335de;
+      border-radius: 42px;
+    }
   }
 }
 </style>

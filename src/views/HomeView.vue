@@ -9,8 +9,8 @@
           you to scan, detect and remove threats from your iPhone and Android
           devices.
         </span>
-        <span class="iphone-bt">Get Certo for iPhone →</span>
-        <span class="android-bt">Get Certo for Android</span>
+        <span class="bt bg-color-orange">Get Certo for iPhone →</span>
+        <span class="bt">Get Certo for Android</span>
       </div>
       <div class="privacy-right">
         <img
@@ -67,9 +67,9 @@
           products have helped countless people safeguard their devices and find
           peace of mind.
         </span>
-        <span class="iphone-bt">Get Certo for iPhone →</span>
+        <span class="bt bg-color-orange">Get Certo for iPhone →</span>
         <div></div>
-        <span class="android-bt">Get Certo for Android</span>
+        <span class="bt">Get Certo for Android</span>
       </div>
       <div class="security-right">
         <img
@@ -79,7 +79,55 @@
       </div>
     </div>
     <!-- ----------------------------------- -->
-    <div class="freedom-container"></div>
+    <div class="icon-container">
+      <span class="icon-title">
+        Get your freedom back, stop mobile spyware today
+      </span>
+      <div class="icon-list">
+        <div class="icon-item"></div>
+        <div class="icon-item"></div>
+        <div class="icon-item"></div>
+        <div class="icon-item"></div>
+        <div class="icon-item"></div>
+        <div class="icon-item"></div>
+        <span class="bt bg-color-orange">Get Certo for iPhone →</span>
+        <span class="bt">Get Certo for Android</span>
+      </div>
+    </div>
+    <!-- ----------------------------------- -->
+    <div class="story-help-container">
+      <div class="story-container">
+        <span class="story-title">Read our story</span>
+        <span class="story-description">
+          Find out why thousands trust Certo to secure their mobile world.
+        </span>
+        <span class="bt bg-color-purple">About us →</span>
+      </div>
+      <div class="help-container">
+        <span class="help-title">Help Center</span>
+        <span class="help-description">
+          Help topics, getting started guides and FAQs.
+        </span>
+        <span class="bt help-bt">Vist help center</span>
+      </div>
+    </div>
+    <!-- ----------------------------------- -->
+    <div class="spying-container">
+      <span class="spying-title">Is someone spying on your phone?</span>
+      <span class="spying-description">Find out with Certo</span>
+      <span class="bt bg-color-orange">Get Certo for iPhone →</span>
+      <span class="bt spying-bt-android">Get Certo for Android</span>
+    </div>
+    <!-- ----------------------------------- -->
+    <div class="insight-container">
+      <span class="insight-title">Latest Insights</span>
+      <div class="insight-item-list">
+        <div class="insight-item"></div>
+        <div class="insight-item"></div>
+        <div class="insight-item"></div>
+      </div>
+      <span class="bt bg-color-orange">View all insight</span>
+    </div>
   </div>
 </template>
 
@@ -127,8 +175,7 @@ const loopedColors = computed(() => [...colors, ...colors]);
         line-height: 28px;
       }
 
-      > .iphone-bt,
-      > .android-bt {
+      > .bt {
         margin: 50px 25px;
       }
     }
@@ -226,8 +273,7 @@ const loopedColors = computed(() => [...colors, ...colors]);
         display: block;
         font-size: 20px;
       }
-      > .iphone-bt,
-      .android-bt {
+      > .bt {
         margin: 10px 0;
       }
     }
@@ -240,12 +286,159 @@ const loopedColors = computed(() => [...colors, ...colors]);
       }
     }
   }
+
+  > .icon-container {
+    width: 100%;
+    justify-content: center;
+    background: linear-gradient(to bottom, #f3f8ff, #e7effa);
+    padding-bottom: 80px;
+
+    > .icon-title {
+      max-width: 740px;
+      display: block;
+      font-size: 36px;
+      font-weight: 800;
+
+      margin: 0 auto;
+      padding: 50px;
+    }
+    > .icon-list {
+      max-width: 840px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 60px 50px;
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      background-color: #ffffff;
+      border-radius: 50px;
+
+      > .icon-item {
+        width: 200px;
+        height: 265px;
+        margin: 20px 10px 60px 10px;
+
+        background-color: #000000;
+      }
+      > .bt {
+        margin: 0 20px;
+      }
+    }
+  }
+
+  > .story-help-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    padding: 90px 0;
+
+    > .story-container {
+      max-width: 460px;
+      width: 100%;
+      padding: 50px;
+
+      text-align: start;
+      border-radius: 50px;
+      background: linear-gradient(to bottom, #f7c95f, #fdb235);
+
+      > .story-title {
+        display: block;
+
+        font-size: 23px;
+        font-weight: 800;
+      }
+      > .story-description {
+        display: block;
+        font-size: 16px;
+
+        margin: 30px 0 50px 0;
+      }
+    }
+
+    > .help-container {
+      padding: 50px 0 50px 100px;
+      text-align: start;
+
+      > .help-title {
+        display: block;
+        font-size: 23px;
+        font-weight: 800;
+      }
+      > .help-description {
+        width: 200px;
+        display: block;
+        margin: 25px 0 50px 0;
+      }
+      > .help-bt {
+        padding-top: 15px;
+        font-size: 16px;
+      }
+    }
+  }
+  > .spying-container {
+    width: 100%;
+    padding: 100px;
+
+    background: linear-gradient(to bottom, #2925cc, #4b48e5);
+
+    > .spying-title {
+      display: block;
+
+      color: #ffffff;
+      font-size: 34px;
+      font-weight: 800;
+    }
+
+    > .spying-description {
+      margin: 60px 0;
+      display: block;
+
+      color: #ffffff;
+      font-size: 18px;
+    }
+    > .spying-bt-android {
+      margin-left: 20px;
+
+      color: #ffffff;
+      border: #ffffff 2px solid;
+    }
+  }
+
+  > .insight-container {
+    padding: 80px 0;
+
+    background-color: #f3f8ff;
+
+    > .insight-title {
+      font-size: 56px;
+      font-weight: 800;
+    }
+    > .insight-item-list {
+      margin: 70px 0;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+
+      > .insight-item {
+        width: 320px;
+        height: 534px;
+        margin: 0 30px;
+        display: inline-block;
+
+        background-color: #000000;
+      }
+    }
+    > .insight-bt {
+    }
+  }
 }
 
 //////////////////////////////////////////////
 
-.iphone-bt,
-.android-bt {
+.bt {
   height: 55px;
   padding: 13px 20px 0 20px;
   display: inline-block;
@@ -254,14 +447,19 @@ const loopedColors = computed(() => [...colors, ...colors]);
   font-weight: 800;
   vertical-align: top;
 
+  border: #000000 2px solid;
   border-radius: 40px;
   cursor: pointer;
 }
-.iphone-bt {
+.bg-color-orange {
   background-color: #ffc247;
+  border: none;
 }
-.android-bt {
-  border: #000000 2px solid;
+.bg-color-purple {
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #4335de;
+  border: none;
 }
 
 /* 무한 슬라이드 애니메이션 */

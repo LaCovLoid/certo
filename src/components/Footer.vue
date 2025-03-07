@@ -58,6 +58,12 @@
 <script setup lang="ts"></script>
 
 <style lang="scss" scoped>
+@mixin minimize($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
 .footer-container {
   max-width: 1440px;
   width: 100%;
@@ -69,9 +75,18 @@
   font-size: 12px;
   text-align: left;
 
+  @include minimize(1000px) {
+    padding: 60px 10px;
+  }
+
   > .top {
     display: flex;
-    margin-bottom: 200px;
+    justify-content: center;
+
+    @include minimize(1000px) {
+      flex-wrap: wrap;
+      justify-content: left;
+    }
 
     > .left {
       max-width: 312px;
@@ -79,6 +94,11 @@
 
       font-size: 11px;
       font-weight: 200;
+
+      @include minimize(1000px) {
+        width: 100%;
+        margin-left: 30px;
+      }
 
       > .left-title {
         font-size: 23px;
@@ -100,9 +120,15 @@
         }
       }
     }
+
     > .center {
       width: 188px;
       margin: 0 50px;
+
+      @include minimize(1000px) {
+        width: 100%;
+      }
+
       > .center-title {
         font-size: 35px;
         font-weight: 700;
@@ -129,19 +155,24 @@
         }
       }
     }
+
     > .right {
       width: 436px;
+      min-width: 436px;
       height: 232px;
-
       padding: 35px;
 
       color: #000000;
-
       background: url("../assets/images/logo_certo_c.png") no-repeat
         center/cover;
       background-size: contain;
       background-color: #ffc247;
       border-radius: 42px;
+
+      @include minimize(1000px) {
+        width: 100%;
+        margin: 30px 0 80px 0;
+      }
 
       > .right-title {
         display: block;
@@ -156,6 +187,7 @@
       }
       > .input-container {
         width: calc(100% - 110px);
+
         height: 35px;
 
         padding: 0 15px;
@@ -193,6 +225,11 @@
 
   > .bottom {
     width: 100%;
+    margin-top: 200px;
+
+    @media (max-width: 1000px) {
+      padding: 30px 0 10px 30px;
+    }
     > .text-apple {
       max-width: 535px;
       display: block;
@@ -202,7 +239,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
   .center {
     order: 1;
   }

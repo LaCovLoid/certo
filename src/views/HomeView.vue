@@ -2,6 +2,7 @@
   <div class="home-container">
     <!-- ----------------------------------- -->
     <div class="privacy-container">
+      <div class="privacy-bg-circle"></div>
       <div class="privacy-left">
         <span class="privacy-title">Your mobile privacy is our mission</span>
         <span class="privacy-description">
@@ -121,7 +122,7 @@
     <!-- ----------------------------------- -->
     <div class="insight-container">
       <span class="insight-title">Latest Insights</span>
-      <div class="insight-item-list">
+      <div class="insight-item-list" id="insight-item-list">
         <div class="insight-item"></div>
         <div class="insight-item"></div>
         <div class="insight-item"></div>
@@ -138,28 +139,74 @@ const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A8", "#FFD700"];
 
 // 색상을 2배로 복제하여 자연스럽게 무한 루프
 const loopedColors = computed(() => [...colors, ...colors]);
+
+/////////////////////////////////////////////////////////////////////////
+function adjustScrollPosition() {
+  const container = document.getElementById("insight-item-list") as HTMLElement;
+  const items = container.getElementsByClassName(
+    "insight-item"
+  ) as HTMLCollectionOf<HTMLElement>; // 타입 단언 사용
+
+  const itemWidth = items[0].offsetWidth; // 첫 번째 아이템의 너비를 사용
+  const containerWidth = container.offsetWidth;
+
+  container.scrollLeft = (itemWidth * 3 - containerWidth) / 2 + itemWidth / 1.3;
+}
+
+// 창 크기 변경 시마다 스크롤을 가운데로 맞추기
+window.addEventListener("resize", adjustScrollPosition);
+
+// 로딩순간
+window.onload = adjustScrollPosition;
 </script>
 
 <style lang="scss" scoped>
+@mixin minimize($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
 .home-container {
   max-width: 1440px;
   margin: 0 auto;
 
   > .privacy-container {
     height: 708px;
-
     display: flex;
-    justify-content: flex-end;
+    position: relative;
 
     background-color: #ffffff;
     overflow: hidden;
 
+    @include minimize(1000px) {
+      height: auto;
+      flex-wrap: wrap;
+    }
+
+    > .privacy-bg-circle {
+      width: 1770px;
+      height: 1770px;
+      position: absolute;
+
+      background: radial-gradient(circle, #ffffff, #e7effa);
+      border-radius: 1000%;
+      transform: translate(-800px, -200px);
+    }
+
     > .privacy-left {
-      max-width: 600px;
+      max-width: 50%;
       transform: translate(75px, 75px);
-      margin: 50px 20px 50px 0;
+      margin: 50px 20px;
+      padding-right: 10px;
 
       text-align: start;
+
+      @include minimize(1000px) {
+        max-width: 100%;
+        transform: translate(0, 0);
+        padding: 30px;
+      }
 
       > .privacy-title {
         display: block;
@@ -169,29 +216,50 @@ const loopedColors = computed(() => [...colors, ...colors]);
       }
 
       > .privacy-description {
-        margin: 50px 0;
+        margin: 50px 0 100px 0;
         display: block;
         font-size: 20px;
         line-height: 28px;
       }
 
       > .bt {
-        margin: 50px 25px;
+        margin: 5px 25px;
+        @include minimize(1000px) {
+          margin: 10px auto;
+        }
       }
     }
     > .privacy-right {
       position: relative;
-      transform: translate(75px, 75px);
+      top: 80px;
+      left: 40px;
+      flex-grow: 1;
+
+      @include minimize(1000px) {
+        width: 550px;
+        height: 350px;
+        top: 0;
+        left: -50px;
+        margin-top: 50px;
+      }
 
       > .img-privacy-subway {
-        width: 740px;
-        height: 740px;
+        width: calc(100% + 50px);
+        height: auto;
+        z-index: 0;
       }
       > .img-privacy-phone {
         width: 240px;
         position: absolute;
         top: 50px;
         left: 30px;
+
+        @include minimize(1000px) {
+          width: 500px;
+          left: calc(50% - 250px + 50px);
+          padding: 60px;
+          top: -200px;
+        }
       }
     }
   }
@@ -200,27 +268,40 @@ const loopedColors = computed(() => [...colors, ...colors]);
     background: linear-gradient(to bottom, #f7c95f, #fdb235);
     text-align: start;
 
+    @include minimize(1000px) {
+      padding-bottom: 50px;
+    }
+
     > .review-title {
       margin-left: 100px;
       display: block;
       font-size: 36px;
       font-weight: 800;
+
+      @include minimize(1000px) {
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+      }
     }
 
     > .slide-container {
-      width: 100%; /* 보이는 영역 크기 */
+      width: 100%;
       margin: 80px 0;
-      overflow: hidden; /* 넘치는 부분 숨김 */
+      overflow: hidden;
 
       > .slide-track {
         display: flex;
-        width: 300%; /* 전체 길이 (2배) */
+        width: 300%; /* 전체 길이 (3배) */
         animation: scroll 20s linear infinite; /* 무한 반복 애니메이션 */
 
         > .slide {
           width: 400px;
           height: 305px;
+          min-width: 400px;
+          max-width: 400px;
           display: flex;
+          flex-wrap: wrap;
           margin: 0 30px;
 
           border-radius: 50px;
@@ -234,21 +315,35 @@ const loopedColors = computed(() => [...colors, ...colors]);
     }
     > .logo-container {
       width: 100%;
-      height: 95px;
 
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
+
+      @include minimize(1000px) {
+        padding: 0 10px;
+      }
 
       > .logo-list-text {
         margin-right: 80px;
         font-size: 23px;
         font-weight: 800;
+
+        @include minimize(1000px) {
+          text-align: center;
+          width: 100%;
+          margin: 0 auto;
+        }
       }
       > .logo-image {
         width: 130px;
         height: 95px;
         margin: 0 20px;
+
+        @include minimize(1000px) {
+          margin: 40px 20px 20px 20px;
+        }
       }
     }
   }
@@ -256,16 +351,22 @@ const loopedColors = computed(() => [...colors, ...colors]);
     width: 100%;
     padding: 100px 0;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 
     > .security-left {
-      text-align: start;
+      text-align: left;
       margin-right: 100px;
+
+      @include minimize(1000px) {
+        margin-right: 0;
+      }
 
       > .security-title {
         width: 446px;
         display: block;
         font-size: 36px;
+        font-weight: 800;
       }
       > .security-description {
         width: 446px;
@@ -275,10 +376,22 @@ const loopedColors = computed(() => [...colors, ...colors]);
       }
       > .bt {
         margin: 10px 0;
+
+        @include minimize(1000px) {
+          margin: 10px auto;
+        }
       }
     }
     > .security-right {
       margin-left: 50px;
+      overflow: hidden;
+
+      @include minimize(1000px) {
+        width: 100%;
+        display: flex;
+        justify-items: left;
+        margin-left: 0;
+      }
 
       > .img-security {
         width: 468px;
@@ -315,15 +428,24 @@ const loopedColors = computed(() => [...colors, ...colors]);
       background-color: #ffffff;
       border-radius: 50px;
 
+      @include minimize(1000px) {
+        padding: 60px 80px;
+        background: none;
+      }
+
       > .icon-item {
         width: 200px;
         height: 265px;
         margin: 20px 10px 60px 10px;
 
         background-color: #000000;
+
+        @include minimize(1000px) {
+          margin: 20px auto;
+        }
       }
       > .bt {
-        margin: 0 20px;
+        margin: 10px 20px;
       }
     }
   }
@@ -331,9 +453,15 @@ const loopedColors = computed(() => [...colors, ...colors]);
   > .story-help-container {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 
     padding: 90px 0;
+
+    @include minimize(1000px) {
+      flex-direction: column;
+      align-items: center;
+    }
 
     > .story-container {
       max-width: 460px;
@@ -356,11 +484,28 @@ const loopedColors = computed(() => [...colors, ...colors]);
 
         margin: 30px 0 50px 0;
       }
+
+      > .bt {
+        @include minimize(1000px) {
+          margin: 0;
+        }
+      }
     }
 
     > .help-container {
+      max-width: 460px;
+      width: 100%;
       padding: 50px 0 50px 100px;
+
       text-align: start;
+
+      @include minimize(1000px) {
+        padding: 50px;
+        margin-top: 20px;
+
+        border-radius: 50px;
+        border: #000000 1px solid;
+      }
 
       > .help-title {
         display: block;
@@ -375,6 +520,9 @@ const loopedColors = computed(() => [...colors, ...colors]);
       > .help-bt {
         padding-top: 15px;
         font-size: 16px;
+        @include minimize(1000px) {
+          margin: 0;
+        }
       }
     }
   }
@@ -383,6 +531,10 @@ const loopedColors = computed(() => [...colors, ...colors]);
     padding: 100px;
 
     background: linear-gradient(to bottom, #2925cc, #4b48e5);
+
+    @include minimize(1000px) {
+      padding: 50px;
+    }
 
     > .spying-title {
       display: block;
@@ -404,6 +556,9 @@ const loopedColors = computed(() => [...colors, ...colors]);
 
       color: #ffffff;
       border: #ffffff 2px solid;
+      @include minimize(1000px) {
+        margin: 10px auto;
+      }
     }
   }
 
@@ -411,27 +566,43 @@ const loopedColors = computed(() => [...colors, ...colors]);
     padding: 80px 0;
 
     background-color: #f3f8ff;
+    overflow: hidden;
 
     > .insight-title {
       font-size: 56px;
       font-weight: 800;
     }
     > .insight-item-list {
-      margin: 70px 0;
+      width: 100%;
+      margin: 0 auto;
+      padding: 30px 0;
       display: flex;
-      justify-content: center;
-      overflow: hidden;
+      justify-content: left;
+
+      overflow-x: auto;
+      scrollbar-width: none; /* Firefox에서 스크롤바 숨기기 */
+      -ms-overflow-style: none; /* IE/Edge에서 스크롤바 숨기기 */
+      scroll-behavior: smooth;
 
       > .insight-item {
-        width: 320px;
+        min-width: 320px;
+        max-width: 320px;
         height: 534px;
-        margin: 0 30px;
-        display: inline-block;
+        margin: 0 80px; /* 아이템 간의 고정 간격 */
 
-        background-color: #000000;
+        border: #000000 1px solid;
+        scroll-snap-align: center; /* 각 아이템을 가운데로 정렬 */
       }
-    }
-    > .insight-bt {
+
+      > .insight-item:hover {
+        transform: scale(1.1); /* 마우스를 올리면 살짝 확대 */
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
+
+        @include minimize(1000px) {
+          transform: none;
+          box-shadow: none;
+        }
+      }
     }
   }
 }
@@ -450,6 +621,12 @@ const loopedColors = computed(() => [...colors, ...colors]);
   border: #000000 2px solid;
   border-radius: 40px;
   cursor: pointer;
+
+  @include minimize(1000px) {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+  }
 }
 .bg-color-orange {
   background-color: #ffc247;
@@ -469,6 +646,6 @@ const loopedColors = computed(() => [...colors, ...colors]);
   }
   100% {
     transform: translateX(-50%);
-  } /* 절반만 이동 후 다시 시작 */
+  }
 }
 </style>

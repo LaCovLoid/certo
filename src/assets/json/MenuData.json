@@ -3,22 +3,22 @@
     {
       "name": "iPhone",
       "url": "/iphone",
-      "submenu": []
+      "subMenu": []
     },
     {
       "name": "Android",
       "url": "/android",
-      "submenu": []
+      "subMenu": []
     },
     {
       "name": "Help",
       "url": "/help",
-      "submenu": []
+      "subMenu": []
     },
     {
       "name": "Company",
       "url": "/company",
-      "submenu": [
+      "subMenu": [
         {
           "name": "item1",
           "url": "/company/item1"

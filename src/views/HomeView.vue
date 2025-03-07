@@ -31,14 +31,13 @@
       </span>
       <div class="slide-container">
         <div class="slide-track">
-          <div
-            v-for="(color, index) in loopedColors"
+          <Review
+            v-for="(item, index) in loopedreviewList"
             :key="index"
-            :style="{ backgroundColor: color }"
+            :value="item"
             class="slide"
           >
-            {{ index + 1 }}
-          </div>
+          </Review>
         </div>
       </div>
       <div class="logo-container">
@@ -85,12 +84,13 @@
         Get your freedom back, stop mobile spyware today
       </span>
       <div class="icon-list">
-        <div class="icon-item"></div>
-        <div class="icon-item"></div>
-        <div class="icon-item"></div>
-        <div class="icon-item"></div>
-        <div class="icon-item"></div>
-        <div class="icon-item"></div>
+        <IconComponent
+          v-for="(item, index) in IconDataList"
+          :key="index"
+          :value="item"
+          class="icon-item"
+        />
+        <!-------------------------------------------->
         <span class="bt bg-color-orange">Get Certo for iPhone →</span>
         <span class="bt">Get Certo for Android</span>
       </div>
@@ -123,9 +123,12 @@
     <div class="insight-container">
       <span class="insight-title">Latest Insights</span>
       <div class="insight-item-list" id="insight-item-list">
-        <div class="insight-item"></div>
-        <div class="insight-item"></div>
-        <div class="insight-item"></div>
+        <Insights
+          v-for="(item, index) in insightsList"
+          :key="index"
+          :value="item"
+          class="insight-item"
+        />
       </div>
       <span class="bt bg-color-orange">View all insight</span>
     </div>
@@ -133,31 +136,73 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, reactive } from "vue";
+import insightsData from "../assets/json/InsightsData.json";
+import reviewData from "../assets/json/ReviewData.json";
+import iconData from "../assets/json/IconData.json";
+import IconComponent from "../components/IconComponent.vue";
+import Insights from "../components/Insight.vue";
+import Review from "../components/Review.vue";
+import type {
+  ReviewDataType,
+  insightsDataType,
+  IconDataType,
+} from "../assets/types/types";
 
-const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A8", "#FFD700"];
+const insightsList: insightsDataType[] = reactive(insightsData.insights);
+const reviewList: ReviewDataType[] = reactive(reviewData.reviews);
+const IconDataList: IconDataType[] = reactive(iconData.icons);
 
-// 색상을 2배로 복제하여 자연스럽게 무한 루프
-const loopedColors = computed(() => [...colors, ...colors]);
+// 2배로 복제하여 자연스럽게 무한 루프
+const loopedreviewList = computed(() => [...reviewList, ...reviewList]);
 
-/////////////////////////////////////////////////////////////////////////
+//스크롤 가운데로 정렬
 function adjustScrollPosition() {
   const container = document.getElementById("insight-item-list") as HTMLElement;
   const items = container.getElementsByClassName(
     "insight-item"
   ) as HTMLCollectionOf<HTMLElement>; // 타입 단언 사용
-
-  const itemWidth = items[0].offsetWidth; // 첫 번째 아이템의 너비를 사용
+  const itemWidth = items[0].offsetWidth;
   const containerWidth = container.offsetWidth;
 
   container.scrollLeft = (itemWidth * 3 - containerWidth) / 2 + itemWidth / 1.3;
+
+  // 드래그로 가로이동
+  // 가져오긴 했지만 이해를 아직 못함, 작동이 이상함
+  /*
+  let isDown = false;
+  let startX: any;
+  let scrollLeft: any;
+
+  container.addEventListener("mousedown", (e) => {
+    isDown = true;
+    container.classList.add("active"); // 스타일 변경 (선택 시 효과)
+    startX = e.pageX - container.offsetLeft;
+    scrollLeft = container.scrollLeft;
+  });
+
+  container.addEventListener("mouseleave", () => {
+    isDown = false;
+    container.classList.remove("active");
+  });
+
+  container.addEventListener("mouseup", () => {
+    isDown = false;
+    container.classList.remove("active");
+  });
+
+  container.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startX) * 2; // 움직임 속도 조절
+    container.scrollLeft = scrollLeft - walk;
+  });
+  */
 }
 
-// 창 크기 변경 시마다 스크롤을 가운데로 맞추기
-window.addEventListener("resize", adjustScrollPosition);
-
-// 로딩순간
-window.onload = adjustScrollPosition;
+window.addEventListener("resize", adjustScrollPosition); //창조절때마다 초기화
+window.onload = adjustScrollPosition; //로딩시 초기화
 </script>
 
 <style lang="scss" scoped>
@@ -292,24 +337,11 @@ window.onload = adjustScrollPosition;
 
       > .slide-track {
         display: flex;
-        width: 300%; /* 전체 길이 (3배) */
-        animation: scroll 20s linear infinite; /* 무한 반복 애니메이션 */
+        width: 500%; /* 전체 길이 (3배) */
+        animation: scroll 30s linear infinite; /* 무한 반복 애니메이션 */
 
         > .slide {
-          width: 400px;
-          height: 305px;
-          min-width: 400px;
-          max-width: 400px;
-          display: flex;
-          flex-wrap: wrap;
           margin: 0 30px;
-
-          border-radius: 50px;
-          align-items: center;
-          justify-content: center;
-          font-size: 20px;
-          color: white;
-          font-weight: bold;
         }
       }
     }
@@ -419,7 +451,7 @@ window.onload = adjustScrollPosition;
       max-width: 840px;
       width: 100%;
       margin: 0 auto;
-      padding: 60px 50px;
+      padding: 60px 0px;
 
       display: flex;
       flex-wrap: wrap;
@@ -434,11 +466,7 @@ window.onload = adjustScrollPosition;
       }
 
       > .icon-item {
-        width: 200px;
-        height: 265px;
-        margin: 20px 10px 60px 10px;
-
-        background-color: #000000;
+        margin: 20px 20px 60px 20px;
 
         @include minimize(1000px) {
           margin: 20px auto;
@@ -585,13 +613,7 @@ window.onload = adjustScrollPosition;
       scroll-behavior: smooth;
 
       > .insight-item {
-        min-width: 320px;
-        max-width: 320px;
-        height: 534px;
-        margin: 0 80px; /* 아이템 간의 고정 간격 */
-
-        border: #000000 1px solid;
-        scroll-snap-align: center; /* 각 아이템을 가운데로 정렬 */
+        margin: 0 80px;
       }
 
       > .insight-item:hover {

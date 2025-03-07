@@ -36,7 +36,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, reactive } from "vue";
+import menuData from "../assets/json/MenuData.json";
+
+const menuList: { name: string; url: string; subMenu: {}[] }[] = reactive(
+  menuData.menus
+);
 
 const isOpen = ref(false);
 const windowWidth = ref(window.innerWidth);

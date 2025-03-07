@@ -235,15 +235,15 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       position: absolute;
 
       background: radial-gradient(circle, #ffffff, #e7effa);
-      border-radius: 1000%;
       transform: translate(-800px, -200px);
+      border-radius: 1000%;
     }
 
     > .privacy-left {
       max-width: 50%;
-      transform: translate(75px, 75px);
       margin: 50px 20px;
       padding-right: 10px;
+      transform: translate(75px, 75px);
 
       text-align: start;
 
@@ -263,6 +263,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       > .privacy-description {
         margin: 50px 0 100px 0;
         display: block;
+
         font-size: 20px;
         line-height: 28px;
       }
@@ -278,6 +279,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       position: relative;
       top: 80px;
       left: 40px;
+
       flex-grow: 1;
 
       @include minimize(1000px) {
@@ -301,17 +303,17 @@ window.onload = adjustScrollPosition; //로딩시 초기화
 
         @include minimize(1000px) {
           width: 500px;
-          left: calc(50% - 250px + 50px);
           padding: 60px;
           top: -200px;
+          left: calc(50% - 250px + 50px);
         }
       }
     }
   }
   > .review-container {
     padding: 100px 0;
-    background: linear-gradient(to bottom, #f7c95f, #fdb235);
     text-align: start;
+    background: linear-gradient(to bottom, #f7c95f, #fdb235);
 
     @include minimize(1000px) {
       padding-bottom: 50px;
@@ -320,13 +322,14 @@ window.onload = adjustScrollPosition; //로딩시 초기화
     > .review-title {
       margin-left: 100px;
       display: block;
+
       font-size: 36px;
       font-weight: 800;
 
       @include minimize(1000px) {
-        text-align: center;
         width: 100%;
         margin: 0 auto;
+        text-align: center;
       }
     }
 
@@ -336,9 +339,9 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       overflow: hidden;
 
       > .slide-track {
+        width: 500%;
         display: flex;
-        width: 500%; /* 전체 길이 (3배) */
-        animation: scroll 30s linear infinite; /* 무한 반복 애니메이션 */
+        animation: scroll 30s linear infinite;
 
         > .slide {
           margin: 0 30px;
@@ -363,9 +366,9 @@ window.onload = adjustScrollPosition; //로딩시 초기화
         font-weight: 800;
 
         @include minimize(1000px) {
-          text-align: center;
           width: 100%;
           margin: 0 auto;
+          text-align: center;
         }
       }
       > .logo-image {
@@ -383,6 +386,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
     width: 100%;
     padding: 100px 0;
     display: flex;
+
     flex-wrap: wrap;
     justify-content: center;
 
@@ -397,15 +401,18 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       > .security-title {
         width: 446px;
         display: block;
+
         font-size: 36px;
         font-weight: 800;
       }
+
       > .security-description {
         width: 446px;
         margin: 50px 0;
         display: block;
         font-size: 20px;
       }
+
       > .bt {
         margin: 10px 0;
 
@@ -421,8 +428,8 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       @include minimize(1000px) {
         width: 100%;
         display: flex;
-        justify-items: left;
         margin-left: 0;
+        justify-items: left;
       }
 
       > .img-security {
@@ -434,31 +441,31 @@ window.onload = adjustScrollPosition; //로딩시 초기화
 
   > .icon-container {
     width: 100%;
+    padding-bottom: 80px;
     justify-content: center;
     background: linear-gradient(to bottom, #f3f8ff, #e7effa);
-    padding-bottom: 80px;
 
     > .icon-title {
       max-width: 740px;
+      padding: 50px;
+      margin: 0 auto;
       display: block;
+
       font-size: 36px;
       font-weight: 800;
-
-      margin: 0 auto;
-      padding: 50px;
     }
+
     > .icon-list {
       max-width: 840px;
       width: 100%;
       margin: 0 auto;
       padding: 60px 0px;
-
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
 
-      background-color: #ffffff;
+      flex-wrap: wrap;
       border-radius: 50px;
+      justify-content: center;
+      background-color: #ffffff;
 
       @include minimize(1000px) {
         padding: 60px 80px;
@@ -472,6 +479,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
           margin: 20px auto;
         }
       }
+
       > .bt {
         margin: 10px 20px;
       }
@@ -480,11 +488,11 @@ window.onload = adjustScrollPosition; //로딩시 초기화
 
   > .story-help-container {
     width: 100%;
+    padding: 90px 0;
     display: flex;
+
     flex-wrap: wrap;
     justify-content: center;
-
-    padding: 90px 0;
 
     @include minimize(1000px) {
       flex-direction: column;
@@ -506,11 +514,11 @@ window.onload = adjustScrollPosition; //로딩시 초기화
         font-size: 23px;
         font-weight: 800;
       }
+
       > .story-description {
+        margin: 30px 0 50px 0;
         display: block;
         font-size: 16px;
-
-        margin: 30px 0 50px 0;
       }
 
       > .bt {
@@ -542,12 +550,13 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       }
       > .help-description {
         width: 200px;
-        display: block;
         margin: 25px 0 50px 0;
+        display: block;
       }
       > .help-bt {
         padding-top: 15px;
         font-size: 16px;
+
         @include minimize(1000px) {
           margin: 0;
         }
@@ -557,7 +566,6 @@ window.onload = adjustScrollPosition; //로딩시 초기화
   > .spying-container {
     width: 100%;
     padding: 100px;
-
     background: linear-gradient(to bottom, #2925cc, #4b48e5);
 
     @include minimize(1000px) {
@@ -567,23 +575,24 @@ window.onload = adjustScrollPosition; //로딩시 초기화
     > .spying-title {
       display: block;
 
-      color: #ffffff;
       font-size: 34px;
       font-weight: 800;
+      color: #ffffff;
     }
 
     > .spying-description {
       margin: 60px 0;
       display: block;
 
-      color: #ffffff;
       font-size: 18px;
+      color: #ffffff;
     }
     > .spying-bt-android {
       margin-left: 20px;
 
       color: #ffffff;
       border: #ffffff 2px solid;
+
       @include minimize(1000px) {
         margin: 10px auto;
       }
@@ -592,7 +601,6 @@ window.onload = adjustScrollPosition; //로딩시 초기화
 
   > .insight-container {
     padding: 80px 0;
-
     background-color: #f3f8ff;
     overflow: hidden;
 
@@ -605,9 +613,9 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       margin: 0 auto;
       padding: 30px 0;
       display: flex;
-      justify-content: left;
 
       overflow-x: auto;
+      justify-content: left;
       scrollbar-width: none; /* Firefox에서 스크롤바 숨기기 */
       -ms-overflow-style: none; /* IE/Edge에서 스크롤바 숨기기 */
       scroll-behavior: smooth;
@@ -617,8 +625,8 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       }
 
       > .insight-item:hover {
-        transform: scale(1.1); /* 마우스를 올리면 살짝 확대 */
-        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
+        transform: scale(1.1);
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
 
         @include minimize(1000px) {
           transform: none;
@@ -640,9 +648,9 @@ window.onload = adjustScrollPosition; //로딩시 초기화
   font-weight: 800;
   vertical-align: top;
 
-  border: #000000 2px solid;
-  border-radius: 40px;
   cursor: pointer;
+  border-radius: 40px;
+  border: #000000 2px solid;
 
   @include minimize(1000px) {
     display: block;
@@ -651,14 +659,14 @@ window.onload = adjustScrollPosition; //로딩시 초기화
   }
 }
 .bg-color-orange {
-  background-color: #ffc247;
   border: none;
+  background-color: #ffc247;
 }
 .bg-color-purple {
   font-size: 16px;
+  border: none;
   color: #ffffff;
   background-color: #4335de;
-  border: none;
 }
 
 /* 무한 슬라이드 애니메이션 */

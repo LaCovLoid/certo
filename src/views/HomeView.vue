@@ -155,54 +155,6 @@ const IconDataList: IconDataType[] = reactive(iconData.icons);
 
 // 2배로 복제하여 자연스럽게 무한 루프
 const loopedreviewList = computed(() => [...reviewList, ...reviewList]);
-
-//스크롤 가운데로 정렬
-function adjustScrollPosition() {
-  const container = document.getElementById("insight-item-list") as HTMLElement;
-  const items = container.getElementsByClassName(
-    "insight-item"
-  ) as HTMLCollectionOf<HTMLElement>; // 타입 단언 사용
-  const itemWidth = items[0].offsetWidth;
-  const containerWidth = container.offsetWidth;
-
-  container.scrollLeft = (itemWidth * 3 - containerWidth) / 2 + itemWidth / 1.3;
-
-  // 드래그로 가로이동
-  // 가져오긴 했지만 이해를 아직 못함, 작동이 이상함
-  /*
-  let isDown = false;
-  let startX: any;
-  let scrollLeft: any;
-
-  container.addEventListener("mousedown", (e) => {
-    isDown = true;
-    container.classList.add("active"); // 스타일 변경 (선택 시 효과)
-    startX = e.pageX - container.offsetLeft;
-    scrollLeft = container.scrollLeft;
-  });
-
-  container.addEventListener("mouseleave", () => {
-    isDown = false;
-    container.classList.remove("active");
-  });
-
-  container.addEventListener("mouseup", () => {
-    isDown = false;
-    container.classList.remove("active");
-  });
-
-  container.addEventListener("mousemove", (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - container.offsetLeft;
-    const walk = (x - startX) * 2; // 움직임 속도 조절
-    container.scrollLeft = scrollLeft - walk;
-  });
-  */
-}
-
-window.addEventListener("resize", adjustScrollPosition); //창조절때마다 초기화
-window.onload = adjustScrollPosition; //로딩시 초기화
 </script>
 
 <style lang="scss" scoped>

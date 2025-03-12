@@ -30,9 +30,18 @@
         Loved by thousands of iPhone<br />and Android users alike
       </span>
       <div class="slide-container">
-        <div class="slide-track">
+        <div class="first-slide-track">
           <Review
-            v-for="(item, index) in loopedreviewList"
+            v-for="(item, index) in reviewList"
+            :key="index"
+            :value="item"
+            class="slide"
+          >
+          </Review>
+        </div>
+        <div class="second-slide-track">
+          <Review
+            v-for="(item, index) in reviewList"
             :key="index"
             :value="item"
             class="slide"
@@ -85,7 +94,7 @@
       </span>
       <div class="icon-list">
         <IconComponent
-          v-for="(item, index) in IconDataList"
+          v-for="(item, index) in iconDataList"
           :key="index"
           :value="item"
           class="icon-item"
@@ -136,7 +145,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive } from "vue";
+import { computed, reactive, ref } from "vue";
 import insightsData from "../assets/json/InsightsData.json";
 import reviewData from "../assets/json/ReviewData.json";
 import iconData from "../assets/json/IconData.json";
@@ -145,22 +154,30 @@ import Insights from "../components/Insight.vue";
 import Review from "../components/Review.vue";
 import type {
   ReviewDataType,
-  insightsDataType,
+  InsightsDataType,
   IconDataType,
 } from "../assets/types/types";
 
-const insightsList: insightsDataType[] = reactive(insightsData.insights);
-const reviewList: ReviewDataType[] = reactive(reviewData.reviews);
-const IconDataList: IconDataType[] = reactive(iconData.icons);
+const insightsList = reactive<InsightsDataType[]>(insightsData.insights);
+const reviewList = ref<ReviewDataType[]>(reviewData.reviews);
+const iconDataList = ref<IconDataType[]>(iconData.icons);
 
 // 2배로 복제하여 자연스럽게 무한 루프
-const loopedreviewList = computed(() => [...reviewList, ...reviewList]);
 </script>
 
 <style lang="scss" scoped>
 @mixin minimize($width) {
   @media (max-width: $width) {
     @content;
+  }
+}
+
+@keyframes moveLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-(400px+30px) * 5);
   }
 }
 
@@ -289,15 +306,24 @@ const loopedreviewList = computed(() => [...reviewList, ...reviewList]);
       width: 100%;
       margin: 80px 0;
       overflow: hidden;
+      position: relative;
 
-      > .slide-track {
-        width: 500%;
+      > .first-slide-track,
+      > .second-slide-track {
+        width: 100%;
         display: flex;
-        animation: scroll 30s linear infinite;
+        animation: moveLeft 5s linear infinite;
 
         > .slide {
-          margin: 0 30px;
+          margin-left: 15px;
+          margin-right: 15px;
         }
+      }
+
+      > .second-slide-track {
+        position: absolute;
+        top: 0;
+        left: (400px+30px) * 5;
       }
     }
     > .logo-container {

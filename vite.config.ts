@@ -16,7 +16,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "@/assets/styles/_variables.scss";`, // ✅ SCSS 전역 변수 적용
+        additionalData: `@use "@/global.scss";`, // ✅ SCSS 전역 변수 적용
       },
     },
   },

@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import type { insightsDataType } from "../assets/types/types";
+import type { insightsDataType } from "../types";
 
 defineProps<{
   value: insightsDataType;

@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import type { IconDataType } from "../assets/types/types";
+import type { IconDataType } from "../types";
 
 defineProps<{
   value: IconDataType;

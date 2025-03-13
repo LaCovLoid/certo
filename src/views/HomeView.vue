@@ -152,11 +152,7 @@ import iconData from "../assets/json/IconData.json";
 import IconComponent from "../components/IconComponent.vue";
 import Insights from "../components/Insight.vue";
 import Review from "../components/Review.vue";
-import type {
-  ReviewDataType,
-  InsightsDataType,
-  IconDataType,
-} from "../assets/types/types";
+import type { ReviewDataType, InsightsDataType, IconDataType } from "../types";
 
 const insightsList = reactive<InsightsDataType[]>(insightsData.insights);
 const reviewList = ref<ReviewDataType[]>(reviewData.reviews);
@@ -166,11 +162,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
 </script>
 
 <style lang="scss" scoped>
-@mixin minimize($width) {
-  @media (max-width: $width) {
-    @content;
-  }
-}
+@use "@/global.scss" as *;
 
 @keyframes moveLeft {
   0% {
@@ -185,6 +177,10 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
   max-width: 1440px;
   margin: 0 auto;
 
+  @include minimize() {
+    background-color: #2925cc;
+  }
+
   > .privacy-container {
     height: 708px;
     display: flex;
@@ -193,7 +189,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
     background-color: #ffffff;
     overflow: hidden;
 
-    @include minimize(1000px) {
+    @include minimize() {
       height: auto;
       flex-wrap: wrap;
     }
@@ -216,7 +212,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
 
       text-align: start;
 
-      @include minimize(1000px) {
+      @include minimize() {
         max-width: 100%;
         transform: translate(0, 0);
         padding: 30px;
@@ -239,7 +235,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
 
       > .bt {
         margin: 5px 25px;
-        @include minimize(1000px) {
+        @include minimize() {
           margin: 10px auto;
         }
       }
@@ -251,7 +247,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
 
       flex-grow: 1;
 
-      @include minimize(1000px) {
+      @include minimize() {
         width: 550px;
         height: 350px;
         top: 0;
@@ -270,7 +266,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
         top: 50px;
         left: 30px;
 
-        @include minimize(1000px) {
+        @include minimize() {
           width: 500px;
           padding: 60px;
           top: -200px;
@@ -284,7 +280,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
     text-align: start;
     background: linear-gradient(to bottom, #f7c95f, #fdb235);
 
-    @include minimize(1000px) {
+    @include minimize() {
       padding-bottom: 50px;
     }
 
@@ -295,7 +291,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       font-size: 36px;
       font-weight: 800;
 
-      @include minimize(1000px) {
+      @include minimize() {
         width: 100%;
         margin: 0 auto;
         text-align: center;
@@ -334,7 +330,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       align-items: center;
       justify-content: center;
 
-      @include minimize(1000px) {
+      @include minimize() {
         padding: 0 10px;
       }
 
@@ -343,7 +339,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
         font-size: 23px;
         font-weight: 800;
 
-        @include minimize(1000px) {
+        @include minimize() {
           width: 100%;
           margin: 0 auto;
           text-align: center;
@@ -354,7 +350,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
         height: 95px;
         margin: 0 20px;
 
-        @include minimize(1000px) {
+        @include minimize() {
           margin: 40px 20px 20px 20px;
         }
       }
@@ -372,12 +368,12 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       text-align: left;
       margin-right: 100px;
 
-      @include minimize(1000px) {
+      @include minimize() {
         margin-right: 0;
       }
 
       > .security-title {
-        width: 446px;
+        max-width: 446px;
         display: block;
 
         font-size: 36px;
@@ -385,7 +381,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       }
 
       > .security-description {
-        width: 446px;
+        max-width: 446px;
         margin: 50px 0;
         display: block;
         font-size: 20px;
@@ -394,7 +390,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       > .bt {
         margin: 10px 0;
 
-        @include minimize(1000px) {
+        @include minimize() {
           margin: 10px auto;
         }
       }
@@ -403,7 +399,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       margin-left: 50px;
       overflow: hidden;
 
-      @include minimize(1000px) {
+      @include minimize() {
         width: 100%;
         display: flex;
         margin-left: 0;
@@ -445,7 +441,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       justify-content: center;
       background-color: #ffffff;
 
-      @include minimize(1000px) {
+      @include minimize() {
         padding: 60px 80px;
         background: none;
       }
@@ -453,7 +449,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       > .icon-item {
         margin: 20px 20px 60px 20px;
 
-        @include minimize(1000px) {
+        @include minimize() {
           margin: 20px auto;
         }
       }
@@ -472,7 +468,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
     flex-wrap: wrap;
     justify-content: center;
 
-    @include minimize(1000px) {
+    @include minimize() {
       flex-direction: column;
       align-items: center;
     }
@@ -500,7 +496,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       }
 
       > .bt {
-        @include minimize(1000px) {
+        @include minimize() {
           margin: 0;
         }
       }
@@ -513,7 +509,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
 
       text-align: start;
 
-      @include minimize(1000px) {
+      @include minimize() {
         padding: 50px;
         margin-top: 20px;
 
@@ -535,7 +531,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
         padding-top: 15px;
         font-size: 16px;
 
-        @include minimize(1000px) {
+        @include minimize() {
           margin: 0;
         }
       }
@@ -546,7 +542,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
     padding: 100px;
     background: linear-gradient(to bottom, #2925cc, #4b48e5);
 
-    @include minimize(1000px) {
+    @include minimize() {
       padding: 50px;
     }
 
@@ -571,7 +567,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       color: #ffffff;
       border: #ffffff 2px solid;
 
-      @include minimize(1000px) {
+      @include minimize() {
         margin: 10px auto;
       }
     }
@@ -606,7 +602,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
         transform: scale(1.1);
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
 
-        @include minimize(1000px) {
+        @include minimize() {
           transform: none;
           box-shadow: none;
         }
@@ -630,7 +626,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
   border-radius: 40px;
   border: #000000 2px solid;
 
-  @include minimize(1000px) {
+  @include minimize() {
     display: block;
     width: fit-content;
     margin: 20px auto;

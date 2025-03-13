@@ -58,11 +58,7 @@
 <script setup lang="ts"></script>
 
 <style lang="scss" scoped>
-@mixin minimize($width) {
-  @media (max-width: $width) {
-    @content;
-  }
-}
+@use "@/global.scss" as *;
 
 .footer-container {
   max-width: 1440px;
@@ -75,7 +71,7 @@
   font-size: 12px;
   text-align: left;
 
-  @include minimize(1000px) {
+  @include minimize() {
     padding: 60px 10px;
   }
 
@@ -83,7 +79,7 @@
     display: flex;
     justify-content: center;
 
-    @include minimize(1000px) {
+    @include minimize() {
       flex-wrap: wrap;
       justify-content: left;
     }
@@ -95,7 +91,7 @@
       font-size: 11px;
       font-weight: 200;
 
-      @include minimize(1000px) {
+      @include minimize() {
         width: 100%;
         margin-left: 30px;
       }
@@ -125,7 +121,7 @@
       width: 188px;
       margin: 0 50px;
 
-      @include minimize(1000px) {
+      @include minimize() {
         width: 100%;
       }
 
@@ -158,7 +154,6 @@
 
     > .right {
       width: 436px;
-      min-width: 436px;
       height: 232px;
       padding: 35px;
 
@@ -169,7 +164,7 @@
       background-color: #ffc247;
       border-radius: 42px;
 
-      @include minimize(1000px) {
+      @include minimize() {
         width: 100%;
         margin: 30px 0 80px 0;
       }

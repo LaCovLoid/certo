@@ -5,7 +5,7 @@
         <img
           class="logo"
           :class="{ 'fixed-menu': isOpen }"
-          src="../assets/images/logo_certo.png"
+          src="@/assets/images/logo/certo.png"
         />
       </div>
       <div v-if="windowWidth > 1000" class="right">
@@ -13,7 +13,9 @@
           <router-link to="/" class="menu-item">iPhone</router-link>
           <router-link to="/" class="menu-item">Android</router-link>
           <router-link to="/" class="menu-item">Help</router-link>
-          <router-link to="/" class="menu-item">Company ∨</router-link>
+          <router-link to="/" class="menu-item"
+            >Company <span class="span-image"></span
+          ></router-link>
           <router-link to="/" class="sign-in-bt">sign in</router-link>
         </div>
       </div>
@@ -22,26 +24,11 @@
         <span class="x-bt" v-else @click="toggleMenu">✖</span>
       </div>
     </div>
-    <!-- 햄버거 메뉴 클릭 시 나타나는 메뉴 -->
-    <div v-if="isOpen" class="overlay" @click="toggleMenu"></div>
-    <div v-if="isOpen" class="side-menu">
-      <router-link to="/" class="hamburger-menu-item">iPhone</router-link>
-      <router-link to="/" class="hamburger-menu-item">Android</router-link>
-      <router-link to="/" class="hamburger-menu-item">Help</router-link>
-      <router-link to="/" class="hamburger-menu-item">Company ∨</router-link>
-      <router-link to="/" class="sign-in-bt">sign in</router-link>
-    </div>
-    <!-- -->
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, reactive } from "vue";
-import menuData from "../assets/json/MenuData.json";
-
-const menuList: { name: string; url: string; subMenu: {}[] }[] = reactive(
-  menuData.menus
-);
+import { ref, onMounted, onUnmounted } from "vue";
 
 const isOpen = ref(false);
 const windowWidth = ref(window.innerWidth);

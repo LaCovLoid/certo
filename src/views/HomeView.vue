@@ -15,11 +15,11 @@
       </div>
       <div class="privacy-right">
         <img
-          src="../assets/images/picture_man_on_subway.png"
+          src="@/assets/images/picture/man_on_subway.png"
           class="img-privacy-subway"
         />
         <img
-          src="../assets/images/picture_smartphone.png"
+          src="@/assets/images/picture/smartphone.png"
           class="img-privacy-phone"
         />
       </div>
@@ -51,20 +51,18 @@
       </div>
       <div class="logo-container">
         <span class="logo-list-text">Featured in:</span>
-        <img src="../assets/images/logo_cnbc.png" class="logo-image" />
-        <img src="../assets/images/logo_new_york_post.png" class="logo-image" />
+        <img src="@/assets/images/logo/cnbc.png" class="logo-image" />
+        <img src="@/assets/images/logo/new_york_post.png" class="logo-image" />
         <img
-          src="../assets/images/logo_financial_times.png"
+          src="@/assets/images/logo/financial_times.png"
           class="logo-image"
         />
-        <img
-          src="../assets/images/logo_reader's_digest.png"
-          class="logo-image"
-        />
-        <img src="../assets/images/logo_zd_net.png" class="logo-image" />
-        <img src="../assets/images/logo_wired.png" class="logo-image" />
+        <img src="@/assets/images/logo/readers_digest.png" class="logo-image" />
+        <img src="@/assets/images/logo/zd_net.png" class="logo-image" />
+        <img src="@/assets/images/logo/wired.png" class="logo-image" />
       </div>
     </div>
+    <!-- ---------------------------logo부분 vfor사용하기------------------------------------------- -->
     <!-- ----------------------------------- -->
     <div class="security-container">
       <div class="security-left">
@@ -82,7 +80,7 @@
       </div>
       <div class="security-right">
         <img
-          src="../assets/images/picture_woman_using_smartphone.png"
+          src="@/assets/images/picture/woman_using_smartphone.png"
           class="img-security"
         />
       </div>

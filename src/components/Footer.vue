@@ -4,9 +4,9 @@
       <div class="left">
         <span class="left-title">Scan.Detect.Remove.</span>
         <div class="sns-list">
-          <img class="sns-icon" src="../assets/images/icon_twitter.png" />
-          <img class="sns-icon" src="../assets/images/icon_facebook.png" />
-          <img class="sns-icon" src="../assets/images/icon_youtube.png" />
+          <img class="sns-icon" src="@/assets/images/icon/twitter.png" />
+          <img class="sns-icon" src="@/assets/images/icon/facebook.png" />
+          <img class="sns-icon" src="@/assets/images/icon/youtube.png" />
         </div>
         <div class="url-container">
           <a class="url-text" href="/">Privacy Police</a>

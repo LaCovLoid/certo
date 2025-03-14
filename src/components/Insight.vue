@@ -10,10 +10,10 @@
 </template>
 
 <script setup lang="ts">
-import type { insightsDataType } from "../types";
+import type { InsightsDataType } from "../types";
 
 defineProps<{
-  value: insightsDataType;
+  value: InsightsDataType;
 }>();
 </script>
 

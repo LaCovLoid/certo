@@ -129,7 +129,7 @@
     <!-- ----------------------------------- -->
     <div class="insight-container">
       <span class="insight-title">Latest Insights</span>
-      <div class="insight-item-list" id="insight-item-list">
+      <div class="insight-item-list">
         <Insights
           v-for="(item, index) in insightsList"
           :key="index"
@@ -143,7 +143,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref } from "vue";
+import { ref } from "vue";
 import insightsData from "../assets/json/InsightsData.json";
 import reviewData from "../assets/json/ReviewData.json";
 import iconData from "../assets/json/IconData.json";
@@ -152,7 +152,7 @@ import Insights from "../components/Insight.vue";
 import Review from "../components/Review.vue";
 import type { ReviewDataType, InsightsDataType, IconDataType } from "../types";
 
-const insightsList = reactive<InsightsDataType[]>(insightsData.insights);
+const insightsList = ref<InsightsDataType[]>(insightsData.insights);
 const reviewList = ref<ReviewDataType[]>(reviewData.reviews);
 const iconDataList = ref<IconDataType[]>(iconData.icons);
 
@@ -203,6 +203,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
     }
 
     > .privacy-left {
+      @include set-bg-image("picture/cctv.png"); //////////////////
       max-width: 50%;
       margin: 50px 20px;
       padding-right: 10px;

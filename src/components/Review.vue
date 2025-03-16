@@ -3,7 +3,7 @@
     <img
       v-for="index in value.score"
       :key="index"
-      src="../assets/images/icon_star.png"
+      src="@/assets/images/icon/star.png"
       class="star-icon"
     />
     <span class="text">{{ value.text }}</span>

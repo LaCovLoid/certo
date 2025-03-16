@@ -4,9 +4,9 @@
       <div class="left">
         <span class="left-title">Scan.Detect.Remove.</span>
         <div class="sns-list">
-          <img class="sns-icon" src="../assets/images/icon_twitter.png" />
-          <img class="sns-icon" src="../assets/images/icon_facebook.png" />
-          <img class="sns-icon" src="../assets/images/icon_youtube.png" />
+          <img class="sns-icon" src="@/assets/images/icon/twitter.png" />
+          <img class="sns-icon" src="@/assets/images/icon/facebook.png" />
+          <img class="sns-icon" src="@/assets/images/icon/youtube.png" />
         </div>
         <div class="url-container">
           <a class="url-text" href="/">Privacy Police</a>
@@ -37,11 +37,10 @@
           Receive the latest mobile security news, exclusive discounts & offers
           straight to your inbox!
         </span>
-        <textarea
-          class="input-container"
-          placeholder="Email address"
-        ></textarea>
-        <span class="submit-bt">submit</span>
+        <div class="input-container">
+          <input class="input-area" placeholder="Email address" />
+          <span class="submit-bt">submit</span>
+        </div>
       </div>
     </div>
     <div class="bottom">
@@ -64,7 +63,7 @@
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
-  padding: 100px 180px;
+  padding: 100px 180px; // <<<<<<<<<<<<<<<<<<<<<<<<<이부분 조정해야함
 
   background-color: #02033b;
   color: #ffffff;
@@ -76,24 +75,23 @@
   }
 
   > .top {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-rows: 1fr; /* 1개의 행 */
+    grid-template-columns: repeat(3, 1fr); /* 3개의 열 */
 
     @include minimize() {
-      flex-wrap: wrap;
-      justify-content: left;
+      grid-template-rows: repeat(3, 1fr); /* 3개의 행 */
+      grid-template-columns: 1fr; /* 1개의 열 */
     }
 
     > .left {
-      max-width: 312px;
-      width: 100%;
-
       font-size: 11px;
       font-weight: 200;
 
       @include minimize() {
         width: 100%;
         margin-left: 30px;
+        order: 3;
       }
 
       > .left-title {
@@ -118,11 +116,13 @@
     }
 
     > .center {
-      width: 188px;
-      margin: 0 50px;
+      margin-left: 50px;
+      margin-right: 50px;
 
       @include minimize() {
         width: 100%;
+        margin: 0;
+        order: 1;
       }
 
       > .center-title {
@@ -153,13 +153,11 @@
     }
 
     > .right {
-      width: 436px;
-      height: 232px;
+      max-width: 436px;
       padding: 35px;
 
       color: #000000;
-      background: url("../assets/images/logo_certo_c.png") no-repeat
-        center/cover;
+      background: url("@/assets/images/logo/certo_c.png") no-repeat center/cover;
       background-size: contain;
       background-color: #ffc247;
       border-radius: 42px;
@@ -167,6 +165,7 @@
       @include minimize() {
         width: 100%;
         margin: 30px 0 80px 0;
+        order: 2;
       }
 
       > .right-title {
@@ -180,40 +179,43 @@
 
         font-size: 15px;
       }
+
       > .input-container {
-        width: calc(100% - 110px);
+        width: 100%;
+        display: flex;
 
-        height: 35px;
+        > .input-area {
+          height: 35px;
+          padding-left: 15px;
+          flex: 7;
 
-        padding: 0 15px;
+          font-size: 16px;
+          line-height: 35px;
+          outline: none;
+          resize: none;
+          border: none;
+          border-top-left-radius: 20px;
+          border-bottom-left-radius: 20px;
+        }
+        > .input-container::placeholder {
+          font-family: "Inter", sans-serif;
+          color: #888;
+        }
+        > .submit-bt {
+          height: 35px;
+          padding: 7px 30px;
+          flex: 3;
 
-        font-size: 16px;
-        line-height: 35px;
-        outline: none;
-        resize: none;
-        border: none;
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-      }
-      > .input-container::placeholder {
-        font-family: "Inter", sans-serif;
-        color: #888;
-      }
-      > .submit-bt {
-        display: inline-block;
-        width: 110px;
-        height: 35px;
-        padding: 7px 30px;
+          background-color: #02033b;
+          color: #ffffff;
+          font-size: 15px;
+          font-weight: 700;
 
-        background-color: #02033b;
-        color: #ffffff;
-        font-size: 15px;
-        font-weight: 700;
-
-        vertical-align: top;
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
-        cursor: pointer;
+          vertical-align: top;
+          border-top-right-radius: 20px;
+          border-bottom-right-radius: 20px;
+          cursor: pointer;
+        }
       }
     }
   }
@@ -231,18 +233,6 @@
 
       font-weight: 200;
     }
-  }
-}
-
-@media (max-width: 1000px) {
-  .center {
-    order: 1;
-  }
-  .right {
-    order: 2;
-  }
-  .left {
-    order: 3;
   }
 }
 </style>

@@ -15,11 +15,11 @@
       </div>
       <div class="privacy-right">
         <img
-          src="../assets/images/picture_man_on_subway.png"
+          src="@/assets/images/picture/man_on_subway.png"
           class="img-privacy-subway"
         />
         <img
-          src="../assets/images/picture_smartphone.png"
+          src="@/assets/images/picture/smartphone.png"
           class="img-privacy-phone"
         />
       </div>
@@ -51,20 +51,18 @@
       </div>
       <div class="logo-container">
         <span class="logo-list-text">Featured in:</span>
-        <img src="../assets/images/logo_cnbc.png" class="logo-image" />
-        <img src="../assets/images/logo_new_york_post.png" class="logo-image" />
+        <img src="@/assets/images/logo/cnbc.png" class="logo-image" />
+        <img src="@/assets/images/logo/new_york_post.png" class="logo-image" />
         <img
-          src="../assets/images/logo_financial_times.png"
+          src="@/assets/images/logo/financial_times.png"
           class="logo-image"
         />
-        <img
-          src="../assets/images/logo_reader's_digest.png"
-          class="logo-image"
-        />
-        <img src="../assets/images/logo_zd_net.png" class="logo-image" />
-        <img src="../assets/images/logo_wired.png" class="logo-image" />
+        <img src="@/assets/images/logo/readers_digest.png" class="logo-image" />
+        <img src="@/assets/images/logo/zd_net.png" class="logo-image" />
+        <img src="@/assets/images/logo/wired.png" class="logo-image" />
       </div>
     </div>
+    <!-- ---------------------------logo부분 vfor사용하기------------------------------------------- -->
     <!-- ----------------------------------- -->
     <div class="security-container">
       <div class="security-left">
@@ -82,7 +80,7 @@
       </div>
       <div class="security-right">
         <img
-          src="../assets/images/picture_woman_using_smartphone.png"
+          src="@/assets/images/picture/woman_using_smartphone.png"
           class="img-security"
         />
       </div>
@@ -131,7 +129,7 @@
     <!-- ----------------------------------- -->
     <div class="insight-container">
       <span class="insight-title">Latest Insights</span>
-      <div class="insight-item-list" id="insight-item-list">
+      <div class="insight-item-list">
         <Insights
           v-for="(item, index) in insightsList"
           :key="index"
@@ -145,7 +143,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref } from "vue";
+import { ref } from "vue";
 import insightsData from "../assets/json/InsightsData.json";
 import reviewData from "../assets/json/ReviewData.json";
 import iconData from "../assets/json/IconData.json";
@@ -154,7 +152,7 @@ import Insights from "../components/Insight.vue";
 import Review from "../components/Review.vue";
 import type { ReviewDataType, InsightsDataType, IconDataType } from "../types";
 
-const insightsList = reactive<InsightsDataType[]>(insightsData.insights);
+const insightsList = ref<InsightsDataType[]>(insightsData.insights);
 const reviewList = ref<ReviewDataType[]>(reviewData.reviews);
 const iconDataList = ref<IconDataType[]>(iconData.icons);
 
@@ -205,6 +203,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
     }
 
     > .privacy-left {
+      @include set-bg-image("picture/cctv.png"); //////////////////
       max-width: 50%;
       margin: 50px 20px;
       padding-right: 10px;

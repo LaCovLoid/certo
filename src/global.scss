@@ -5,7 +5,17 @@ $black-color: #000000;
 */
 
 @mixin minimize() {
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     @content;
   }
+}
+
+@mixin set-bg-image($src) {
+  background-image: url("@/assets/images/" + $src);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: inline-block;
+
+  @content;
 }

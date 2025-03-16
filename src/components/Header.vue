@@ -22,7 +22,7 @@
         <span class="x-bt" v-else @click="toggleMenu">✖</span>
       </div>
     </div>
-    <!-- ✅ 햄버거 메뉴 클릭 시 나타나는 메뉴 -->
+    <!-- 햄버거 메뉴 클릭 시 나타나는 메뉴 -->
     <div v-if="isOpen" class="overlay" @click="toggleMenu"></div>
     <div v-if="isOpen" class="side-menu">
       <router-link to="/" class="hamburger-menu-item">iPhone</router-link>
@@ -72,11 +72,7 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@mixin minimize($width) {
-  @media (max-width: $width) {
-    @content;
-  }
-}
+@use "@/global.scss" as *;
 
 .set-color-container {
   width: 100%;
@@ -98,12 +94,14 @@ onUnmounted(() => {
       > .logo {
         width: 157px;
         height: 54px;
-        margin: auto 100px;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 100px;
 
         object-fit: contain;
         z-index: 10;
 
-        @include minimize(1000px) {
+        @include minimize() {
           margin: auto 30px;
         }
       }

@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ReviewDataType } from "../assets/types/types";
+import type { ReviewDataType } from "../types";
 
 defineProps<{
   value: ReviewDataType;

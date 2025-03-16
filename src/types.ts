@@ -3,7 +3,7 @@ export interface ReviewDataType {
   score: number;
   text: string;
 }
-export interface insightsDataType {
+export interface InsightsDataType {
   image: string;
   title: string;
   text: string;

@@ -30,9 +30,18 @@
         Loved by thousands of iPhone<br />and Android users alike
       </span>
       <div class="slide-container">
-        <div class="slide-track">
+        <div class="first-slide-track">
           <Review
-            v-for="(item, index) in loopedreviewList"
+            v-for="(item, index) in reviewList"
+            :key="index"
+            :value="item"
+            class="slide"
+          >
+          </Review>
+        </div>
+        <div class="second-slide-track">
+          <Review
+            v-for="(item, index) in reviewList"
             :key="index"
             :value="item"
             class="slide"
@@ -85,7 +94,7 @@
       </span>
       <div class="icon-list">
         <IconComponent
-          v-for="(item, index) in IconDataList"
+          v-for="(item, index) in iconDataList"
           :key="index"
           :value="item"
           class="icon-item"
@@ -136,85 +145,41 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive } from "vue";
+import { computed, reactive, ref } from "vue";
 import insightsData from "../assets/json/InsightsData.json";
 import reviewData from "../assets/json/ReviewData.json";
 import iconData from "../assets/json/IconData.json";
 import IconComponent from "../components/IconComponent.vue";
 import Insights from "../components/Insight.vue";
 import Review from "../components/Review.vue";
-import type {
-  ReviewDataType,
-  insightsDataType,
-  IconDataType,
-} from "../assets/types/types";
+import type { ReviewDataType, InsightsDataType, IconDataType } from "../types";
 
-const insightsList: insightsDataType[] = reactive(insightsData.insights);
-const reviewList: ReviewDataType[] = reactive(reviewData.reviews);
-const IconDataList: IconDataType[] = reactive(iconData.icons);
+const insightsList = reactive<InsightsDataType[]>(insightsData.insights);
+const reviewList = ref<ReviewDataType[]>(reviewData.reviews);
+const iconDataList = ref<IconDataType[]>(iconData.icons);
 
 // 2배로 복제하여 자연스럽게 무한 루프
-const loopedreviewList = computed(() => [...reviewList, ...reviewList]);
-
-//스크롤 가운데로 정렬
-function adjustScrollPosition() {
-  const container = document.getElementById("insight-item-list") as HTMLElement;
-  const items = container.getElementsByClassName(
-    "insight-item"
-  ) as HTMLCollectionOf<HTMLElement>; // 타입 단언 사용
-  const itemWidth = items[0].offsetWidth;
-  const containerWidth = container.offsetWidth;
-
-  container.scrollLeft = (itemWidth * 3 - containerWidth) / 2 + itemWidth / 1.3;
-
-  // 드래그로 가로이동
-  // 가져오긴 했지만 이해를 아직 못함, 작동이 이상함
-  /*
-  let isDown = false;
-  let startX: any;
-  let scrollLeft: any;
-
-  container.addEventListener("mousedown", (e) => {
-    isDown = true;
-    container.classList.add("active"); // 스타일 변경 (선택 시 효과)
-    startX = e.pageX - container.offsetLeft;
-    scrollLeft = container.scrollLeft;
-  });
-
-  container.addEventListener("mouseleave", () => {
-    isDown = false;
-    container.classList.remove("active");
-  });
-
-  container.addEventListener("mouseup", () => {
-    isDown = false;
-    container.classList.remove("active");
-  });
-
-  container.addEventListener("mousemove", (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - container.offsetLeft;
-    const walk = (x - startX) * 2; // 움직임 속도 조절
-    container.scrollLeft = scrollLeft - walk;
-  });
-  */
-}
-
-window.addEventListener("resize", adjustScrollPosition); //창조절때마다 초기화
-window.onload = adjustScrollPosition; //로딩시 초기화
 </script>
 
 <style lang="scss" scoped>
-@mixin minimize($width) {
-  @media (max-width: $width) {
-    @content;
+@use "@/global.scss" as *;
+
+@keyframes moveLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-(400px+30px) * 5);
   }
 }
 
 .home-container {
   max-width: 1440px;
   margin: 0 auto;
+
+  @include minimize() {
+    background-color: #2925cc;
+  }
 
   > .privacy-container {
     height: 708px;
@@ -224,7 +189,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
     background-color: #ffffff;
     overflow: hidden;
 
-    @include minimize(1000px) {
+    @include minimize() {
       height: auto;
       flex-wrap: wrap;
     }
@@ -247,7 +212,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
 
       text-align: start;
 
-      @include minimize(1000px) {
+      @include minimize() {
         max-width: 100%;
         transform: translate(0, 0);
         padding: 30px;
@@ -270,7 +235,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
 
       > .bt {
         margin: 5px 25px;
-        @include minimize(1000px) {
+        @include minimize() {
           margin: 10px auto;
         }
       }
@@ -282,7 +247,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
 
       flex-grow: 1;
 
-      @include minimize(1000px) {
+      @include minimize() {
         width: 550px;
         height: 350px;
         top: 0;
@@ -301,7 +266,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
         top: 50px;
         left: 30px;
 
-        @include minimize(1000px) {
+        @include minimize() {
           width: 500px;
           padding: 60px;
           top: -200px;
@@ -315,7 +280,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
     text-align: start;
     background: linear-gradient(to bottom, #f7c95f, #fdb235);
 
-    @include minimize(1000px) {
+    @include minimize() {
       padding-bottom: 50px;
     }
 
@@ -326,7 +291,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       font-size: 36px;
       font-weight: 800;
 
-      @include minimize(1000px) {
+      @include minimize() {
         width: 100%;
         margin: 0 auto;
         text-align: center;
@@ -337,15 +302,24 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       width: 100%;
       margin: 80px 0;
       overflow: hidden;
+      position: relative;
 
-      > .slide-track {
-        width: 500%;
+      > .first-slide-track,
+      > .second-slide-track {
+        width: 100%;
         display: flex;
-        animation: scroll 30s linear infinite;
+        animation: moveLeft 5s linear infinite;
 
         > .slide {
-          margin: 0 30px;
+          margin-left: 15px;
+          margin-right: 15px;
         }
+      }
+
+      > .second-slide-track {
+        position: absolute;
+        top: 0;
+        left: (400px+30px) * 5;
       }
     }
     > .logo-container {
@@ -356,7 +330,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       align-items: center;
       justify-content: center;
 
-      @include minimize(1000px) {
+      @include minimize() {
         padding: 0 10px;
       }
 
@@ -365,7 +339,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
         font-size: 23px;
         font-weight: 800;
 
-        @include minimize(1000px) {
+        @include minimize() {
           width: 100%;
           margin: 0 auto;
           text-align: center;
@@ -376,7 +350,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
         height: 95px;
         margin: 0 20px;
 
-        @include minimize(1000px) {
+        @include minimize() {
           margin: 40px 20px 20px 20px;
         }
       }
@@ -394,12 +368,12 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       text-align: left;
       margin-right: 100px;
 
-      @include minimize(1000px) {
+      @include minimize() {
         margin-right: 0;
       }
 
       > .security-title {
-        width: 446px;
+        max-width: 446px;
         display: block;
 
         font-size: 36px;
@@ -407,7 +381,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       }
 
       > .security-description {
-        width: 446px;
+        max-width: 446px;
         margin: 50px 0;
         display: block;
         font-size: 20px;
@@ -416,7 +390,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       > .bt {
         margin: 10px 0;
 
-        @include minimize(1000px) {
+        @include minimize() {
           margin: 10px auto;
         }
       }
@@ -425,7 +399,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       margin-left: 50px;
       overflow: hidden;
 
-      @include minimize(1000px) {
+      @include minimize() {
         width: 100%;
         display: flex;
         margin-left: 0;
@@ -467,7 +441,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       justify-content: center;
       background-color: #ffffff;
 
-      @include minimize(1000px) {
+      @include minimize() {
         padding: 60px 80px;
         background: none;
       }
@@ -475,7 +449,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       > .icon-item {
         margin: 20px 20px 60px 20px;
 
-        @include minimize(1000px) {
+        @include minimize() {
           margin: 20px auto;
         }
       }
@@ -494,7 +468,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
     flex-wrap: wrap;
     justify-content: center;
 
-    @include minimize(1000px) {
+    @include minimize() {
       flex-direction: column;
       align-items: center;
     }
@@ -522,7 +496,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       }
 
       > .bt {
-        @include minimize(1000px) {
+        @include minimize() {
           margin: 0;
         }
       }
@@ -535,7 +509,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
 
       text-align: start;
 
-      @include minimize(1000px) {
+      @include minimize() {
         padding: 50px;
         margin-top: 20px;
 
@@ -557,7 +531,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
         padding-top: 15px;
         font-size: 16px;
 
-        @include minimize(1000px) {
+        @include minimize() {
           margin: 0;
         }
       }
@@ -568,7 +542,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
     padding: 100px;
     background: linear-gradient(to bottom, #2925cc, #4b48e5);
 
-    @include minimize(1000px) {
+    @include minimize() {
       padding: 50px;
     }
 
@@ -593,7 +567,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
       color: #ffffff;
       border: #ffffff 2px solid;
 
-      @include minimize(1000px) {
+      @include minimize() {
         margin: 10px auto;
       }
     }
@@ -628,7 +602,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
         transform: scale(1.1);
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
 
-        @include minimize(1000px) {
+        @include minimize() {
           transform: none;
           box-shadow: none;
         }
@@ -652,7 +626,7 @@ window.onload = adjustScrollPosition; //로딩시 초기화
   border-radius: 40px;
   border: #000000 2px solid;
 
-  @include minimize(1000px) {
+  @include minimize() {
     display: block;
     width: fit-content;
     margin: 20px auto;

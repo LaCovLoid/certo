@@ -63,7 +63,8 @@
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
-  padding: 100px 180px; // <<<<<<<<<<<<<<<<<<<<<<<<<이부분 조정해야함
+  grid-auto-flow: column; /* 1행 유지 */
+  gap: 10px;
 
   background-color: #02033b;
   color: #ffffff;
@@ -71,13 +72,14 @@
   text-align: left;
 
   @include minimize() {
-    padding: 60px 10px;
+    padding: 0px;
   }
 
   > .top {
     display: grid;
     grid-template-rows: 1fr; /* 1개의 행 */
     grid-template-columns: repeat(3, 1fr); /* 3개의 열 */
+    align-items: flex-start;
 
     @include minimize() {
       grid-template-rows: repeat(3, 1fr); /* 3개의 행 */
@@ -90,7 +92,7 @@
 
       @include minimize() {
         width: 100%;
-        margin-left: 30px;
+        padding-left: 30px;
         order: 3;
       }
 
@@ -154,6 +156,7 @@
 
     > .right {
       max-width: 436px;
+
       padding: 35px;
 
       color: #000000;

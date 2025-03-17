@@ -51,15 +51,23 @@
       </div>
       <div class="logo-container">
         <span class="logo-list-text">Featured in:</span>
-        <img src="@/assets/images/logo/cnbc.png" class="logo-image" />
-        <img src="@/assets/images/logo/new_york_post.png" class="logo-image" />
-        <img
-          src="@/assets/images/logo/financial_times.png"
-          class="logo-image"
-        />
-        <img src="@/assets/images/logo/readers_digest.png" class="logo-image" />
-        <img src="@/assets/images/logo/zd_net.png" class="logo-image" />
-        <img src="@/assets/images/logo/wired.png" class="logo-image" />
+        <div class="logo-grid-container">
+          <img src="@/assets/images/logo/cnbc.png" class="logo-image" />
+          <img
+            src="@/assets/images/logo/new_york_post.png"
+            class="logo-image"
+          />
+          <img
+            src="@/assets/images/logo/financial_times.png"
+            class="logo-image"
+          />
+          <img
+            src="@/assets/images/logo/readers_digest.png"
+            class="logo-image"
+          />
+          <img src="@/assets/images/logo/zd_net.png" class="logo-image" />
+          <img src="@/assets/images/logo/wired.png" class="logo-image" />
+        </div>
       </div>
     </div>
     <!-- ---------------------------logo부분 vfor사용하기------------------------------------------- -->
@@ -344,13 +352,26 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
           text-align: center;
         }
       }
-      > .logo-image {
-        width: 130px;
-        height: 95px;
-        margin: 0 20px;
+
+      > .logo-grid-container {
+        display: grid;
+
+        grid-auto-flow: column;
+        gap: 40px; /* 그리드 간격 */
 
         @include minimize() {
-          margin: 40px 20px 20px 20px;
+          grid-auto-flow: row;
+
+          grid-template-columns: repeat(2, 1fr); /* 3개의 열을 균등하게 배분 */
+        }
+
+        > .logo-image {
+          width: 130px;
+          height: 95px;
+
+          @include minimize() {
+            margin: 40px 20px 20px 20px;
+          }
         }
       }
     }

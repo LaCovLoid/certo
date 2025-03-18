@@ -52,9 +52,6 @@ const updateWidth = () => {
   }
 };
 
-///////////////////
-// ////////////메뉴 보이게하다가 작아지면 안보이게 했다가 버튼누르면 다시 보이게게
-
 onMounted(() => {
   window.addEventListener("resize", updateWidth);
   updateWidth();
@@ -83,9 +80,10 @@ onUnmounted(() => {
 
   > .left {
     > .logo {
-      width: auto;
+      width: 100%;
       height: 100%;
-      padding: 24px;
+      padding-top: 24px;
+      padding-bottom: 24px;
       margin-left: 96px;
       position: relative;
 
@@ -106,9 +104,6 @@ onUnmounted(() => {
     display: flex;
     justify-content: flex-end;
 
-    font-size: 19px;
-    font-weight: 800;
-
     > .menu-list {
       display: flex;
       justify-content: flex-end;
@@ -116,23 +111,25 @@ onUnmounted(() => {
 
       @include minimize() {
         width: 100%;
-        height: 100%;
-        padding-top: 50px;
-        padding-left: 40px;
+        padding-top: 102px - 24.5px;
 
         flex-direction: column;
         align-items: flex-start;
       }
 
       > .menu-item {
+        padding: 38.5px 24px;
         display: block;
 
         color: #000000;
+        font-size: 19px;
+        font-weight: 800;
         text-decoration: none;
         z-index: 10;
 
         @include minimize() {
-          margin-top: 20px;
+          padding: 24.5px;
+          margin-left: 11.5px;
         }
 
         > .arrow-bottom {
@@ -148,16 +145,25 @@ onUnmounted(() => {
       > .sign-in-bt {
         padding: 14px 20px;
         margin: auto 0;
+        margin-left: 72px;
+        margin-right: 120px;
 
         color: #ffffff;
         text-decoration: none;
         font-size: 18px;
         background-color: #4335de;
         border-radius: 42px;
+        z-index: 10;
+
+        @include minimize() {
+          margin: 0;
+          margin-left: 31px;
+          margin-top: 32px;
+        }
       }
     }
     > .hamburger-bt {
-      width: autp;
+      width: auto;
       height: 100%;
       padding: 25px;
       display: none;

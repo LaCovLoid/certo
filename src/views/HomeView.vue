@@ -183,10 +183,6 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
   max-width: 1440px;
   margin: 0 auto;
 
-  @include minimize() {
-    background-color: #2925cc;
-  }
-
   > .privacy-container {
     height: 708px;
     display: flex;
@@ -211,7 +207,6 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
     }
 
     > .privacy-left {
-      @include set-bg-image("picture/cctv.png"); //////////////////
       max-width: 50%;
       margin: 50px 20px;
       padding-right: 10px;

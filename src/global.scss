@@ -10,12 +10,10 @@ $black-color: #000000;
   }
 }
 
-@mixin set-bg-image($src) {
+@mixin set-span-image($src) {
   background-image: url("@/assets/images/" + $src);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  display: inline-block;
-
   @content;
 }

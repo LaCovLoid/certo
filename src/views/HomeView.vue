@@ -14,8 +14,14 @@
           you to scan, detect and remove threats from your iPhone and Android
           devices.
         </span>
-        <span class="bt bg-color-orange">Get Certo for iPhone →</span>
-        <span class="bt">Get Certo for Android</span>
+        <span class="privacy-bt-iphone"
+          >Get Certo for iPhone
+          <img
+            src="@/assets/images/icon/chevron_right.svg"
+            class="chevron-right"
+          />
+        </span>
+        <span class="privacy-bt-android">Get Certo for Android</span>
       </div>
       <div class="privacy-right">
         <img
@@ -184,35 +190,51 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
   margin: 0 auto;
 
   > .privacy-container {
-    height: 708px;
     display: flex;
     position: relative;
 
+    padding-top: 123.37px;
+    padding-bottom: 123.37px;
+    padding-left: 177px;
+    padding-right: 177px;
+
     background-color: #ffffff;
     overflow: hidden;
+    z-index: -20;
 
     @include minimize() {
       height: auto;
       flex-wrap: wrap;
+
+      padding: 33px 26px;
     }
 
     > .privacy-bg-circle {
       width: 1770px;
       height: 1770px;
       position: absolute;
+      z-index: -10;
+
+      //left: calc(50% - 885px);
+      //transform: translate(-710px, -280px);
+
+      bottom: -885px;
+      left: -885px;
 
       background: radial-gradient(circle, #ffffff, #e7effa);
-      transform: translate(-800px, -200px);
       border-radius: 1000%;
+
+      @include minimize() {
+        transform: translate(-550px, -200px);
+      }
     }
     > .img-privacy-subway {
-      width: 741.59px;
-      height: 741.59px;
+      width: calc(50% + 21.6px);
       position: absolute;
-      bottom: -102.59px;
+      bottom: -105px;
       right: -91px;
 
-      z-index: 0;
+      z-index: -1;
 
       @include minimize() {
         width: 506.59px;
@@ -223,50 +245,72 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
     }
 
     > .privacy-left {
-      max-width: 50%;
-      margin: 50px 20px;
-      padding-right: 10px;
-      transform: translate(75px, 75px);
+      width: calc(50% + 91px - 21.6px);
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 11.37px;
 
       text-align: start;
 
       @include minimize() {
-        max-width: 100%;
-        transform: translate(0, 0);
-        padding: 30px;
+        width: 100%;
+        padding: 0px;
       }
 
       > .privacy-title {
         display: block;
 
         font-size: 60px;
-        font-weight: 700;
+        font-weight: 800;
+        line-height: 72px;
+        letter-spacing: -1.2px;
+
+        @include minimize() {
+          font-size: 48px;
+          line-height: 59px;
+          padding-right: 50px;
+        }
       }
 
       > .privacy-description {
-        margin: 50px 0 100px 0;
+        margin-top: 48px;
+        margin-bottom: 73.5px;
         display: block;
 
         font-size: 20px;
-        line-height: 28px;
+        line-height: 30px;
+
+        @include minimize() {
+          margin-top: 10px;
+          padding-right: 30px;
+
+          font-size: 17px;
+          line-height: 25px;
+        }
       }
 
-      > .bt {
-        margin: 5px 25px;
-        @include minimize() {
-          margin: 10px auto;
+      > .privacy-bt-iphone {
+        margin-top: 22.5px;
+        margin-right: 48px;
+        @include orange-bt;
+
+        > .chevron-right {
+          width: 20px;
+          height: 14px;
+          margin-left: 16.66px;
+          margin-top: auto;
+          margin-bottom: auto;
         }
+      }
+      > .privacy-bt-android {
+        margin-top: 22.5px;
+
+        @include bt;
       }
     }
     > .privacy-right {
-      position: relative;
-      top: 80px;
-      left: 40px;
-
-      flex-grow: 1;
-
       @include minimize() {
-        width: 550px;
+        width: 100%;
         height: 350px;
         top: 0;
         left: -50px;
@@ -274,15 +318,14 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       }
 
       > .img-privacy-phone {
-        width: 240px;
-        top: 50px;
-        left: 30px;
+        width: 241.5px;
+        height: auto;
+        margin-left: 15px;
 
         @include minimize() {
-          width: 500px;
-          padding: 60px;
-          top: -200px;
-          left: calc(50% - 250px + 50px);
+          width: 352px;
+          margin: 0;
+          transform: translateY(-60px);
         }
       }
     }
@@ -655,27 +698,10 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
 //////////////////////////////////////////////
 
 .bt {
-  height: 55px;
-  padding: 13px 20px 0 20px;
-  display: inline-block;
-
-  font-size: 19px;
-  font-weight: 800;
-  vertical-align: top;
-
-  cursor: pointer;
-  border-radius: 40px;
-  border: #000000 2px solid;
-
-  @include minimize() {
-    display: block;
-    width: fit-content;
-    margin: 20px auto;
-  }
+  @include bt;
 }
 .bg-color-orange {
-  border: none;
-  background-color: #ffc247;
+  @include orange-bt;
 }
 .bg-color-purple {
   font-size: 16px;

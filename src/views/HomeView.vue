@@ -3,6 +3,10 @@
     <!-- ----------------------------------- -->
     <div class="privacy-container">
       <div class="privacy-bg-circle"></div>
+      <img
+        src="@/assets/images/picture/man_on_subway.png"
+        class="img-privacy-subway"
+      />
       <div class="privacy-left">
         <span class="privacy-title">Your mobile privacy is our mission</span>
         <span class="privacy-description">
@@ -14,10 +18,6 @@
         <span class="bt">Get Certo for Android</span>
       </div>
       <div class="privacy-right">
-        <img
-          src="@/assets/images/picture/man_on_subway.png"
-          class="img-privacy-subway"
-        />
         <img
           src="@/assets/images/picture/smartphone.png"
           class="img-privacy-phone"
@@ -205,6 +205,22 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       transform: translate(-800px, -200px);
       border-radius: 1000%;
     }
+    > .img-privacy-subway {
+      width: 741.59px;
+      height: 741.59px;
+      position: absolute;
+      bottom: -102.59px;
+      right: -91px;
+
+      z-index: 0;
+
+      @include minimize() {
+        width: 506.59px;
+        height: 674.19px;
+        bottom: -344.71px;
+        right: -43px;
+      }
+    }
 
     > .privacy-left {
       max-width: 50%;
@@ -257,14 +273,8 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
         margin-top: 50px;
       }
 
-      > .img-privacy-subway {
-        width: calc(100% + 50px);
-        height: auto;
-        z-index: 0;
-      }
       > .img-privacy-phone {
         width: 240px;
-        position: absolute;
         top: 50px;
         left: 30px;
 

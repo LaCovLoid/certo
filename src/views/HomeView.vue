@@ -98,17 +98,19 @@
       <span class="icon-title">
         Get your freedom back, stop mobile spyware today
       </span>
-      <div class="icon-list">
-        <IconComponent
-          v-for="(item, index) in iconDataList"
-          :key="index"
-          :value="item"
-          class="icon-item"
-        />
+      <div class="icon-item-list-container">
+        <div class="icon-grid-container">
+          <IconComponent
+            v-for="(item, index) in iconDataList"
+            :key="index"
+            :value="item"
+            class="icon-item"
+          />
+        </div>
         <!-------------------------------------------->
-        <span class="bt bg-color-orange">Get Certo for iPhone →</span>
-        <span class="bt">Get Certo for Android</span>
       </div>
+      <span class="bt bg-color-orange">Get Certo for iPhone →</span>
+      <span class="bt">Get Certo for Android</span>
     </div>
     <!-- ----------------------------------- -->
     <div class="story-help-container">
@@ -163,8 +165,6 @@ import type { ReviewDataType, InsightsDataType, IconDataType } from "../types";
 const insightsList = ref<InsightsDataType[]>(insightsData.insights);
 const reviewList = ref<ReviewDataType[]>(reviewData.reviews);
 const iconDataList = ref<IconDataType[]>(iconData.icons);
-
-// 2배로 복제하여 자연스럽게 무한 루프
 </script>
 
 <style lang="scss" scoped>
@@ -380,11 +380,12 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
     justify-content: center;
 
     > .security-left {
+      width: 50%;
       text-align: left;
-      margin-right: 100px;
 
       @include minimize() {
-        margin-right: 0;
+        width: 100%;
+        text-align: lef;
       }
 
       > .security-title {
@@ -411,7 +412,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       }
     }
     > .security-right {
-      margin-left: 50px;
+      width: 50%;
       overflow: hidden;
 
       @include minimize() {
@@ -444,12 +445,11 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       font-weight: 800;
     }
 
-    > .icon-list {
+    > .icon-item-list-container {
       max-width: 840px;
       width: 100%;
       margin: 0 auto;
       padding: 60px 0px;
-      display: flex;
 
       flex-wrap: wrap;
       border-radius: 50px;
@@ -461,11 +461,23 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
         background: none;
       }
 
-      > .icon-item {
-        margin: 20px 20px 60px 20px;
+      > .icon-grid-container {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-auto-flow: column;
+        gap: 40px;
 
         @include minimize() {
-          margin: 20px auto;
+          grid-auto-flow: row;
+          grid-template-columns: 1fr;
+        }
+
+        > .icon-item {
+          margin: 20px 20px 60px 20px;
+
+          @include minimize() {
+            margin: 20px auto;
+          }
         }
       }
 
@@ -604,17 +616,21 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       display: flex;
 
       overflow-x: auto;
-      justify-content: left;
+      justify-content: center;
       scrollbar-width: none; /* Firefox에서 스크롤바 숨기기 */
       -ms-overflow-style: none; /* IE/Edge에서 스크롤바 숨기기 */
-      scroll-behavior: smooth;
+
+      @include minimize() {
+        animation: carousel 20s infinite;
+        overflow: visible;
+      }
 
       > .insight-item {
         margin: 0 80px;
       }
 
       > .insight-item:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
 
         @include minimize() {
@@ -665,6 +681,27 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes carousel {
+  10% {
+    transform: translateX(-33%);
+  }
+  33% {
+    transform: translateX(-33%);
+  }
+  43% {
+    transform: translateX(33%);
+  }
+  66% {
+    transform: translateX(33%);
+  }
+  76% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 </style>

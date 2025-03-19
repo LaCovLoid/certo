@@ -325,7 +325,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
         @include minimize() {
           width: 352px;
           margin: 0;
-          transform: translateY(-60px);
+          transform: translateY(-65px);
         }
       }
     }
@@ -349,7 +349,6 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       @include minimize() {
         width: 100%;
         margin: 0 auto;
-        text-align: center;
       }
     }
 

@@ -53,8 +53,16 @@ defineProps<{
       display: block;
       margin-bottom: 20px;
 
-      font-size: 20px;
+      font-size: 23px;
       font-weight: 800;
+      line-height: 30px;
+      letter-spacing: 0;
+    }
+
+    > .text {
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0;
     }
   }
 }

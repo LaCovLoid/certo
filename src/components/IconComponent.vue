@@ -20,20 +20,26 @@ defineProps<{
   height: 265px;
 
   > .icon-image {
-    width: 72px;
+    width: 77px;
     height: 72px;
   }
 
   > .title {
     display: block;
-    margin: 20px 0;
+    margin-top: 24px;
+    margin-bottom: 24px;
 
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 800;
+    line-height: 25px;
+    letter-spacing: -0.4px;
   }
   > .text {
     display: block;
-    line-height: 22px;
+
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
   }
 }
 </style>

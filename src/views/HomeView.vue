@@ -52,25 +52,15 @@
       <div class="logo-container">
         <span class="logo-list-text">Featured in:</span>
         <div class="logo-grid-container">
-          <img src="@/assets/images/logo/cnbc.png" class="logo-image" />
           <img
-            src="@/assets/images/logo/new_york_post.png"
+            v-for="(item, index) in logoList"
+            :key="index"
+            :src="item"
             class="logo-image"
           />
-          <img
-            src="@/assets/images/logo/financial_times.png"
-            class="logo-image"
-          />
-          <img
-            src="@/assets/images/logo/readers_digest.png"
-            class="logo-image"
-          />
-          <img src="@/assets/images/logo/zd_net.png" class="logo-image" />
-          <img src="@/assets/images/logo/wired.png" class="logo-image" />
         </div>
       </div>
     </div>
-    <!-- ---------------------------logo부분 vfor사용하기------------------------------------------- -->
     <!-- ----------------------------------- -->
     <div class="security-container">
       <div class="security-left">
@@ -159,9 +149,11 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+
 import insightsData from "../assets/json/InsightsData.json";
 import reviewData from "../assets/json/ReviewData.json";
 import iconData from "../assets/json/IconData.json";
+
 import IconComponent from "../components/IconComponent.vue";
 import Insights from "../components/Insight.vue";
 import Review from "../components/Review.vue";
@@ -173,6 +165,14 @@ import type { ReviewDataType, InsightsDataType, IconDataType } from "../types";
 const insightsList = ref<InsightsDataType[]>(insightsData.insights);
 const reviewList = ref<ReviewDataType[]>(reviewData.reviews);
 const iconDataList = ref<IconDataType[]>(iconData.icons);
+const logoList = ref<string[]>([
+  "/src/assets/images/logo/cnbc.png",
+  "/src/assets/images/logo/new_york_post.png",
+  "/src/assets/images/logo/financial_times.png",
+  "/src/assets/images/logo/readers_digest.png",
+  "/src/assets/images/logo/zd_net.png",
+  "/src/assets/images/logo/wired.png",
+]);
 </script>
 
 <style lang="scss" scoped>
@@ -426,6 +426,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       justify-content: center;
 
       align-items: center;
+      overflow: hidden;
 
       @include minimize() {
         padding: 0;
@@ -448,6 +449,8 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
 
       > .logo-grid-container {
         display: grid;
+        padding-left: 42.8px;
+        padding-right: 42.8px;
 
         grid-auto-flow: column;
         column-gap: 36px;

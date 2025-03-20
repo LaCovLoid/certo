@@ -65,16 +65,17 @@
 .footer-container {
   max-width: 1440px;
   width: 100%;
-  margin: 0 auto;
   padding-top: 96px;
   padding-bottom: 96px;
   padding-left: 20px;
   padding-right: 20px;
+  margin: 0 auto;
 
-  background-color: #02033b;
   color: #ffffff;
   font-size: 12px;
   text-align: left;
+
+  background-color: #02033b;
 
   @include minimize() {
     padding: 0px;
@@ -83,6 +84,7 @@
   > .top {
     max-width: 1056px;
     margin: 0 auto;
+
     display: flex;
     justify-content: center;
 
@@ -93,6 +95,7 @@
     > .left {
       max-width: 312px;
       width: 100%;
+
       font-size: 11px;
       font-weight: 200;
 
@@ -108,6 +111,7 @@
         font-size: 23px;
         font-weight: 700;
       }
+
       > .sns-list {
         margin-top: 50px;
         margin-bottom: 50px;
@@ -122,6 +126,7 @@
           margin-right: 40px;
         }
       }
+
       > .url-container {
         margin-right: 50px;
         margin-bottom: 50px;
@@ -157,20 +162,23 @@
         font-size: 35px;
         font-weight: 700;
       }
+
       > .whiteline {
         width: 100%;
         height: 1px;
-
         margin: 30px 0;
+
         border-bottom: #ffffff 1px solid;
       }
+
       > .menu-container {
         width: 100%;
         margin-top: 50px;
 
         > .menu-item {
-          display: block;
           margin: 20px 0;
+
+          display: block;
 
           color: #ffc247;
           font-size: 19px;
@@ -194,21 +202,24 @@
           margin-top: 45px;
         }
       }
+
       > .yellow-container {
         padding: 35px;
 
         color: #02033b;
+
+        border-radius: 42px;
         background: url("@/assets/images/logo/certo_c.png") no-repeat
           center/cover;
         background-size: contain;
         background-color: #ffc247;
-        border-radius: 42px;
 
         > .right-title {
           display: block;
           font-size: 23px;
           font-weight: 700;
         }
+
         > .right-subtitle {
           margin: 30px 0;
           display: block;
@@ -224,13 +235,15 @@
             max-width: 254.8px;
             height: 35px;
             padding-left: 15px;
+
             flex: 7;
 
             font-size: 16px;
             line-height: 35px;
-            outline: none;
-            resize: none;
+
             border: none;
+            resize: none;
+            outline: none;
             border-top-left-radius: 20px;
             border-bottom-left-radius: 20px;
 
@@ -238,10 +251,12 @@
               max-width: 179.8px;
             }
           }
+
           > .input-container::placeholder {
             font-family: "Inter", sans-serif;
             color: #888;
           }
+
           > .submit-bt {
             height: 35px;
             padding: 7px 30px;

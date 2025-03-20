@@ -221,9 +221,9 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
     display: flex;
     position: relative;
 
-    z-index: 0;
     overflow: hidden;
     background-color: #ffffff;
+    z-index: 0;
 
     @include minimize() {
       height: auto;
@@ -465,6 +465,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       }
     }
   }
+
   > .security-container {
     width: 100%;
     padding: 86px 132px;

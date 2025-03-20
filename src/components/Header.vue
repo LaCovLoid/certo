@@ -70,6 +70,7 @@ onUnmounted(() => {
   width: 100%;
   height: 102px;
   margin: 0 auto;
+
   display: flex;
   justify-content: space-between;
 
@@ -82,9 +83,10 @@ onUnmounted(() => {
   .overlay {
     display: none;
     position: fixed;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.3); /* 반투명 배경 */
-    backdrop-filter: blur(10px); /* 블러 처리 */
+    inset: 0; /* top, right, bottom, left 0 이랑 같은거. 배경 전체 뒤덮는것 */
+
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
     z-index: 5;
 
     @include minimize() {
@@ -119,6 +121,7 @@ onUnmounted(() => {
     width: 653px;
     height: 100%;
     padding-right: 120px;
+
     display: flex;
     justify-content: flex-end;
 
@@ -138,20 +141,23 @@ onUnmounted(() => {
       @include minimize() {
         width: 100%;
         padding-top: 102px - 24.5px;
-        text-align: left;
 
         flex-direction: column;
+
+        text-align: left;
         align-items: flex-start;
       }
 
       > .menu-item {
         padding: 38.5px 24px;
+
         display: block;
 
         color: #000000;
         font-size: 19px;
         font-weight: 800;
         text-decoration: none;
+
         z-index: 10;
 
         @include minimize() {
@@ -164,6 +170,7 @@ onUnmounted(() => {
         > .arrow-bottom {
           width: 12px;
           height: 7px;
+
           display: inline-block;
 
           @include set-span-image("/icon/arrow_bottom.svg") {
@@ -177,11 +184,12 @@ onUnmounted(() => {
         margin-left: 72px;
 
         color: #ffffff;
-        text-decoration: none;
         font-size: 18px;
         font-weight: 800;
-        background-color: #4335de;
+        text-decoration: none;
+
         border-radius: 42px;
+        background-color: #4335de;
         z-index: 10;
 
         @include minimize() {
@@ -195,15 +203,17 @@ onUnmounted(() => {
       width: auto;
       height: 100%;
       padding: 25px;
+
       display: none;
 
-      z-index: 10;
       cursor: pointer;
+      z-index: 10;
 
       @include minimize() {
         display: block;
       }
     }
+
     > .x-bt {
       padding: 23px;
     }

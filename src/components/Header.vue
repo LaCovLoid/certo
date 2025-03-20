@@ -71,6 +71,7 @@ onUnmounted(() => {
   height: 102px;
   margin: 0 auto;
   display: flex;
+  justify-content: space-between;
 
   background-color: #f3f8ff;
 
@@ -78,17 +79,33 @@ onUnmounted(() => {
     height: 72px;
   }
 
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.3); /* 반투명 배경 */
+    backdrop-filter: blur(10px); /* 블러 처리 */
+    z-index: 5;
+
+    @include minimize() {
+      display: block;
+    }
+  }
+
   > .left {
     > .logo {
-      width: 100%;
       height: 100%;
       padding-top: 24px;
       padding-bottom: 24px;
-      margin-left: 96px;
+      padding-left: 120px;
       position: relative;
 
       object-fit: contain;
       z-index: 10;
+
+      @media (max-width: 1100px) {
+        padding-left: 80px;
+      }
 
       @include minimize() {
         width: auto;
@@ -99,19 +116,29 @@ onUnmounted(() => {
     }
   }
   > .right {
-    width: 100%;
+    width: 653px;
     height: 100%;
+    padding-right: 120px;
     display: flex;
     justify-content: flex-end;
 
+    @media (max-width: 1100px) {
+      padding-right: 80px;
+    }
+
+    @include minimize() {
+      padding-right: 0;
+    }
+
     > .menu-list {
       display: flex;
-      justify-content: flex-end;
+      justify-content: right;
       position: absolute;
 
       @include minimize() {
         width: 100%;
         padding-top: 102px - 24.5px;
+        text-align: left;
 
         flex-direction: column;
         align-items: flex-start;
@@ -128,8 +155,10 @@ onUnmounted(() => {
         z-index: 10;
 
         @include minimize() {
-          padding: 24.5px;
-          margin-left: 11.5px;
+          width: 100%;
+          padding-top: 24.5px;
+          padding-bottom: 24.5px;
+          padding-left: 11.5px;
         }
 
         > .arrow-bottom {
@@ -146,11 +175,11 @@ onUnmounted(() => {
         padding: 14px 20px;
         margin: auto 0;
         margin-left: 72px;
-        margin-right: 120px;
 
         color: #ffffff;
         text-decoration: none;
         font-size: 18px;
+        font-weight: 800;
         background-color: #4335de;
         border-radius: 42px;
         z-index: 10;
@@ -178,20 +207,6 @@ onUnmounted(() => {
     > .x-bt {
       padding: 23px;
     }
-  }
-}
-
-/* 오버레이 (배경 뿌옇게) */
-.overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.3); /* 반투명 배경 */
-  backdrop-filter: blur(10px); /* 블러 처리 */
-  z-index: 5;
-
-  @include minimize() {
-    display: block;
   }
 }
 </style>

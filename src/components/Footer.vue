@@ -159,10 +159,10 @@
       }
       > .whiteline {
         width: 100%;
-        height: 0.2px;
+        height: 1px;
 
         margin: 30px 0;
-        border: #ffffff 1px solid;
+        border-bottom: #ffffff 1px solid;
       }
       > .menu-container {
         width: 100%;
@@ -247,6 +247,7 @@
             padding: 7px 30px;
             flex: 3;
 
+            text-align: center;
             background-color: #02033b;
             color: #ffffff;
             font-size: 15px;

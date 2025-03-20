@@ -27,7 +27,7 @@
     <!-- ----------------------------------- -->
     <div class="review-container">
       <span class="review-title">
-        Loved by thousands of iPhone<br />and Android users alike
+        Loved by thousands of iPhone and Android users alike
       </span>
       <div class="slide-container">
         <div class="first-slide-track">
@@ -75,7 +75,8 @@
     <div class="security-container">
       <div class="security-left">
         <span class="security-title">
-          At Certo, mobile security is not an afterthought, it’s what we do.
+          At Certo, <span class="minimize-line-change"></span>mobile security is
+          not an afterthought, it’s what we do.
         </span>
         <span class="security-description">
           With years of experience in mobile security and spyware detection, our
@@ -195,7 +196,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
 
     background-color: #ffffff;
     overflow: hidden;
-    z-index: -20;
+    z-index: 0;
 
     @include minimize() {
       height: auto;
@@ -208,7 +209,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       width: 1770px;
       height: 1770px;
       position: absolute;
-      z-index: -10;
+      z-index: -1;
 
       //left: calc(50% - 885px);
       //transform: translate(-710px, -280px);
@@ -245,7 +246,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       padding-right: 15px;
       padding-top: 11.37px;
 
-      text-align: start;
+      text-align: left;
 
       @include minimize() {
         width: 100%;
@@ -328,8 +329,10 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
     }
 
     > .review-title {
+      max-width: 609px;
       padding-top: 83px;
-      padding-left: 96px;
+      padding-right: 45.58px;
+      margin-left: 96px;
       display: block;
 
       font-size: 36px;
@@ -338,16 +341,25 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       letter-spacing: -0.72px;
 
       @include minimize() {
-        width: 100%;
-        margin: 0 auto;
+        margin: 0;
+        padding-top: 32px;
+        padding-left: 24px;
+        padding-right: 35px;
       }
     }
 
     > .slide-container {
       width: 100%;
-      margin: 72px 0;
+      margin-top: 72px;
+      margin-bottom: 72px;
+
       overflow: hidden;
       position: relative;
+
+      @include minimize() {
+        margin-top: 30px;
+        margin-bottom: 78px;
+      }
 
       > .first-slide-track,
       > .second-slide-track {
@@ -379,7 +391,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       justify-content: center;
 
       @include minimize() {
-        padding: 0 10px;
+        padding: 0;
       }
 
       > .logo-list-text {
@@ -391,7 +403,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
 
         @include minimize() {
           width: 100%;
-          margin: 0 auto;
+          margin-bottom: 36px;
           text-align: center;
         }
       }
@@ -400,11 +412,11 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
         display: grid;
 
         grid-auto-flow: column;
-        gap: 36px; /* 그리드 간격 */
+        column-gap: 36px;
+        row-gap: 59px;
 
         @include minimize() {
           grid-auto-flow: row;
-
           grid-template-columns: repeat(2, 1fr); /* 3개의 열을 균등하게 배분 */
         }
 
@@ -413,7 +425,6 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
           height: 95px;
 
           @include minimize() {
-            margin: 40px 20px 20px 20px;
           }
         }
       }
@@ -424,11 +435,15 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
     padding: 86px 132px;
     display: flex;
 
+    overflow: hidden;
     flex-wrap: wrap;
     justify-content: center;
 
     @include minimize() {
-      padding: 0;
+      padding-top: 32px;
+      padding-left: 24px;
+      padding-right: 24px;
+      padding-bottom: 45.98px;
     }
 
     > .security-left {
@@ -439,7 +454,8 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
 
       @include minimize() {
         width: 100%;
-        text-align: lef;
+        text-align: left;
+        padding-left: 0;
       }
 
       > .security-title {
@@ -451,6 +467,16 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
         font-weight: 800;
         line-height: 45px;
         letter-spacing: -0.7px;
+
+        @include minimize() {
+          padding-right: 0;
+        }
+
+        > .minimize-line-change {
+          @include minimize() {
+            display: block;
+          }
+        }
       }
 
       > .security-description {
@@ -463,6 +489,10 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
         font-size: 20px;
         line-height: 30px;
         letter-spacing: 0;
+
+        @include minimize() {
+          margin-top: 19px;
+        }
       }
 
       > .security-bt-iphone {
@@ -486,15 +516,16 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       }
 
       > .img-security {
-        max-width: 510px;
+        width: 510px;
         height: auto;
 
         margin-left: 39px;
         transform: translateY(20px);
 
         @include minimize() {
+          width: 386px;
           margin-left: 0;
-          overflow: hidden;
+          transform: translateX(-60px);
         }
       }
     }
@@ -508,6 +539,13 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
     justify-content: center;
     background: linear-gradient(to bottom, #f3f8ff, #e7effa);
 
+    @include minimize() {
+      padding-top: 32px;
+      padding-left: 6px;
+      padding-right: 6px;
+      padding-bottom: 63.5px;
+    }
+
     > .icon-title {
       max-width: 840px;
       margin: 0 auto;
@@ -517,6 +555,11 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
 
       font-size: 36px;
       font-weight: 800;
+
+      @include minimize() {
+        width: 388px;
+        padding: 0;
+      }
     }
 
     > .icon-item-list-container {
@@ -530,19 +573,25 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       justify-content: center;
       background-color: #ffffff;
 
+      box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+
       @include minimize() {
-        padding: 60px 80px;
-        background: none;
+        margin-top: 65px;
+        padding: 0;
+
+        background-color: transparent;
+        box-shadow: none;
       }
 
       > .icon-grid-container {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3열 */
-        gap: 48px;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 48px;
+        row-gap: 72px;
 
         @include minimize() {
-          grid-auto-flow: row;
           grid-template-columns: 1fr;
+          row-gap: 32px;
         }
 
         > .icon-item {
@@ -564,13 +613,18 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
 
   > .story-help-container {
     width: 100%;
-    padding: 84px 0;
+    padding-top: 84px;
+    padding-bottom: 84px;
     display: flex;
 
     flex-wrap: wrap;
     justify-content: center;
 
     @include minimize() {
+      padding-top: 32px;
+      padding-left: 14px;
+      padding-right: 14px;
+
       flex-direction: column;
       align-items: center;
     }
@@ -584,6 +638,10 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       text-align: left;
       border-radius: 50px;
       background: linear-gradient(to bottom, #f7c95f, #fdb235);
+
+      @include minimize() {
+        padding-right: 33px;
+      }
 
       > .story-title {
         display: block;
@@ -608,6 +666,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
         font-size: 15px;
         color: #ffffff;
         background-color: #4335de;
+        margin: 0;
       }
     }
 
@@ -621,7 +680,8 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       text-align: start;
 
       @include minimize() {
-        padding: 50px;
+        padding: 48px;
+        padding-right: 112px;
         margin-top: 20px;
 
         border-radius: 50px;
@@ -647,6 +707,7 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       }
       > .help-bt {
         font-size: 15px;
+        margin: 0;
 
         @include minimize() {
           margin: 0;
@@ -662,6 +723,10 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
     background: linear-gradient(to bottom, #2925cc, #4b48e5);
 
     @include minimize() {
+      padding-top: 32px;
+      padding-bottom: 31.5px;
+      padding-left: 33px;
+      padding-right: 34px;
     }
 
     > .spying-title {
@@ -688,10 +753,20 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       line-height: 30px;
       letter-spacing: 0;
       color: #ffffff;
+
+      @include minimize() {
+        margin-top: 18px;
+        margin-bottom: 53px;
+      }
     }
 
     > .spying-bt-iphone {
       margin-right: 24px;
+
+      @include minimize() {
+        margin: 0 auto;
+        margin-bottom: 22.5px;
+      }
     }
     > .spying-bt-android {
       color: #ffffff;
@@ -705,14 +780,24 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
     background-color: #f3f8ff;
     overflow: hidden;
 
+    @include minimize() {
+      padding-top: 32px;
+      padding-bottom: 33.5px;
+    }
+
     > .insight-title {
       font-size: 56px;
       font-weight: 800;
+
+      @include minimize() {
+        font-size: 32px;
+      }
     }
+
     > .insight-item-list {
       width: 100%;
-      margin: 0 auto;
-      padding: 72px 0;
+      margin-top: 72px;
+      margin-bottom: 72px;
       display: flex;
 
       overflow-x: auto;
@@ -721,6 +806,9 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
       -ms-overflow-style: none; /* IE/Edge에서 스크롤바 숨기기 */
 
       @include minimize() {
+        margin-top: 53px;
+        margin-bottom: 77px;
+
         animation: carousel 20s infinite;
         overflow: visible;
       }

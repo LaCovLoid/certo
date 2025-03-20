@@ -63,6 +63,8 @@
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
+  padding-top: 96px;
+  padding-bottom: 96px;
   grid-auto-flow: column; /* 1행 유지 */
   gap: 10px;
 
@@ -76,6 +78,8 @@
   }
 
   > .top {
+    max-width: 1056px;
+    margin: 0 auto;
     display: grid;
     grid-template-rows: 1fr; /* 1개의 행 */
     grid-template-columns: repeat(3, 1fr); /* 3개의 열 */
@@ -224,16 +228,19 @@
   }
 
   > .bottom {
-    width: 100%;
-    margin-top: 200px;
+    max-width: 1056px;
+    margin: 0 auto;
+    padding-top: 188px;
 
     @media (max-width: 1000px) {
-      padding: 30px 0 10px 30px;
     }
     > .text-apple {
-      max-width: 535px;
+      max-width: 539px;
       display: block;
 
+      font-size: 12px;
+      line-height: 15px;
+      letter-spacing: 0;
       font-weight: 200;
     }
   }

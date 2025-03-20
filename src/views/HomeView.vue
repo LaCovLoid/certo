@@ -853,16 +853,16 @@ const iconDataList = ref<IconDataType[]>(iconData.icons);
 
 @keyframes carousel {
   10% {
-    transform: translateX(-33%);
+    transform: translateX(-400px);
   }
   33% {
-    transform: translateX(-33%);
+    transform: translateX(-400px);
   }
   43% {
-    transform: translateX(33%);
+    transform: translateX(400px);
   }
   66% {
-    transform: translateX(33%);
+    transform: translateX(400px);
   }
   76% {
     transform: translateX(0);

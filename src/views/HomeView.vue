@@ -222,7 +222,6 @@ const logoList = ref<string[]>([
     position: relative;
 
     overflow: hidden;
-    background-color: #ffffff;
     z-index: 0;
 
     @include minimize() {
@@ -245,7 +244,7 @@ const logoList = ref<string[]>([
       z-index: -1;
 
       @include minimize() {
-        transform: translate(-550px, -200px);
+        transform: translate(-520px, -120px);
       }
     }
 
@@ -307,6 +306,7 @@ const logoList = ref<string[]>([
 
         @include minimize() {
           margin-top: 10px;
+          margin-bottom: 40px;
           padding-right: 30px;
 
           font-size: 17px;
@@ -319,6 +319,7 @@ const logoList = ref<string[]>([
         margin-right: 48px;
 
         @include minimize() {
+          margin-top: 0;
           margin-left: auto;
           margin-right: auto;
         }

@@ -169,8 +169,10 @@ onUnmounted(() => {
       }
 
       > .company-bt {
-        margin-top: 14.5px;
-        margin-bottom: 22px;
+        @include minimize() {
+          margin-top: 14.5px;
+          margin-bottom: 22px;
+        }
       }
 
       > .sign-in-bt {

@@ -401,7 +401,7 @@ const logoList = ref<string[]>([
         width: 100%;
 
         display: flex;
-        animation: moveLeft 5s linear infinite;
+        animation: moveLeft 60s linear infinite;
 
         > .slide {
           margin-left: 15px;

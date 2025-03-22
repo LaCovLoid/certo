@@ -1,6 +1,5 @@
 <template>
   <div class="header-container">
-    <div class="overlay" v-if="isOpen"></div>
     <div class="left">
       <img class="logo" src="@/assets/images/logo/certo.png" />
     </div>
@@ -9,10 +8,10 @@
         <router-link to="/" class="menu-item">iPhone</router-link>
         <router-link to="/" class="menu-item">Android</router-link>
         <router-link to="/" class="menu-item">Help</router-link>
-        <router-link to="/" class="menu-item"
-          >Company <span class="arrow-bottom"></span
+        <router-link to="/" class="menu-item company-bt"
+          >Company<span class="arrow-bottom"></span
         ></router-link>
-        <router-link to="/" class="sign-in-bt">sign in</router-link>
+        <router-link to="/" class="sign-in-bt">Sign in</router-link>
       </div>
       <img
         src="../assets/images/icon/hamburger.png"
@@ -28,6 +27,7 @@
       />
     </div>
   </div>
+  <div class="overlay" v-if="isOpen"></div>
 </template>
 
 <script setup lang="ts">
@@ -73,25 +73,13 @@ onUnmounted(() => {
 
   display: flex;
   justify-content: space-between;
+  position: relative;
 
   background-color: #f3f8ff;
+  z-index: 10;
 
   @include minimize() {
-    height: 72px;
-  }
-
-  .overlay {
-    display: none;
-    position: fixed;
-    inset: 0; /* top, right, bottom, left 0 이랑 같은거. 배경 전체 뒤덮는것 */
-
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-    z-index: 5;
-
-    @include minimize() {
-      display: block;
-    }
+    height: 70px;
   }
 
   > .left {
@@ -100,10 +88,8 @@ onUnmounted(() => {
       padding-top: 24px;
       padding-bottom: 24px;
       padding-left: 120px;
-      position: relative;
 
       object-fit: contain;
-      z-index: 10;
 
       @media (max-width: 1100px) {
         padding-left: 80px;
@@ -140,12 +126,12 @@ onUnmounted(() => {
 
       @include minimize() {
         width: 100%;
-        padding-top: 102px - 24.5px;
+        padding-top: 70px + 32px - 24.5px;
 
         flex-direction: column;
+        justify-content: left;
 
         text-align: left;
-        align-items: flex-start;
       }
 
       > .menu-item {
@@ -162,20 +148,29 @@ onUnmounted(() => {
 
         @include minimize() {
           width: 100%;
+
           padding-top: 24.5px;
           padding-bottom: 24.5px;
-          padding-left: 11.5px;
+          padding-left: 24.5px;
+
+          margin-left: 11.5px;
         }
 
         > .arrow-bottom {
           width: 12px;
           height: 7px;
+          margin-left: 9.11px;
 
           display: inline-block;
 
           @include set-span-image("/icon/arrow_bottom.svg") {
           }
         }
+      }
+
+      > .company-bt {
+        margin-top: 14.5px;
+        margin-bottom: 22px;
       }
 
       > .sign-in-bt {
@@ -193,9 +188,12 @@ onUnmounted(() => {
         z-index: 10;
 
         @include minimize() {
+          width: fit-content;
+
           margin: 0;
           margin-left: 31px;
-          margin-top: 32px;
+
+          font-size: 15px;
         }
       }
     }
@@ -217,6 +215,20 @@ onUnmounted(() => {
     > .x-bt {
       padding: 23px;
     }
+  }
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0; /* top, right, bottom, left 0 이랑 같은거. 배경 전체 뒤덮는것 */
+
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: 5;
+
+  @include minimize() {
+    display: block;
   }
 }
 </style>

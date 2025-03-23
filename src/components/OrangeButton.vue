@@ -33,7 +33,7 @@ defineProps<{
   > .chevron-right {
     width: 20px;
     height: 14px;
-    margin-left: 14.66px;
+    margin-left: 14px;
     margin-top: auto;
     margin-bottom: auto;
   }

@@ -75,7 +75,12 @@ onUnmounted(() => {
   justify-content: space-between;
   position: relative;
 
-  background-color: #f3f8ff;
+  /*bottom linear 투명도 조절을 위해 이번만 바꿔 사용 #F3F8FF,#E7EFFA  */
+  background: linear-gradient(
+    to bottom,
+    rgba(243, 248, 255, 1) 75%,
+    rgba(231, 239, 250, 0.8) 100%
+  );
   z-index: 10;
 
   @include minimize() {
@@ -162,6 +167,7 @@ onUnmounted(() => {
           margin-left: 9.11px;
 
           display: inline-block;
+          vertical-align: middle;
 
           @include set-span-image("/icon/arrow_bottom.svg") {
           }
@@ -176,12 +182,16 @@ onUnmounted(() => {
       }
 
       > .sign-in-bt {
-        padding: 14px 20px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-left: 20px;
+        padding-right: 21px;
+
         margin: auto 0;
         margin-left: 72px;
 
         color: #ffffff;
-        font-size: 18px;
+        font-size: 15px;
         font-weight: 800;
         text-decoration: none;
 
@@ -215,7 +225,7 @@ onUnmounted(() => {
     }
 
     > .x-bt {
-      padding: 23px;
+      padding: 22px;
     }
   }
 }

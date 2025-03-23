@@ -237,7 +237,7 @@ const logoList = ref<string[]>([
 
       position: absolute;
       bottom: -885px;
-      left: -885px;
+      left: -875px;
 
       background: radial-gradient(circle, #ffffff, #e7effa);
       border-radius: 1000%;
@@ -252,8 +252,8 @@ const logoList = ref<string[]>([
       width: calc(50% + 21.6px);
 
       position: absolute;
-      bottom: -105px;
-      right: -91px;
+      bottom: -102px;
+      right: -93px;
 
       z-index: -1;
 
@@ -284,7 +284,7 @@ const logoList = ref<string[]>([
 
         font-size: 60px;
         font-weight: 800;
-        line-height: 72px;
+        line-height: 75px;
         letter-spacing: -1.2px;
 
         @include minimize() {

@@ -121,7 +121,7 @@
         <span class="help-description">
           Help topics, getting started guides and FAQs.
         </span>
-        <WhiteButton text="Vist help center" class="help-bt" />
+        <WhiteButton text="Visit help center" class="help-bt" />
       </div>
     </div>
     <!-- ----------------------------------- -->
@@ -133,7 +133,7 @@
     </div>
     <!-- ----------------------------------- -->
     <div class="insight-container">
-      <span class="insight-title">Latest Insights</span>
+      <span class="insight-title">Latest insights</span>
       <div class="insight-item-list">
         <Insights
           v-for="(item, index) in insightsList"
@@ -711,8 +711,8 @@ const logoList = ref<string[]>([
 
       > .story-description {
         padding-right: 5.17px;
-        margin-top: 24px;
-        margin-bottom: 48px;
+        margin-top: 26px;
+        margin-bottom: 60px;
 
         display: block;
 
@@ -723,10 +723,12 @@ const logoList = ref<string[]>([
 
       > .story-bt {
         padding: 16px 20px;
-        margin: 0;
+        margin-top: 48px;
 
         color: #ffffff;
         font-size: 15px;
+        font-weight: 800;
+
         background-color: #4335de;
         border-radius: 50px;
         box-shadow: none;
@@ -781,6 +783,10 @@ const logoList = ref<string[]>([
       }
       > .help-bt {
         margin: 0;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        padding-right: 20px;
+
         font-size: 15px;
 
         @include minimize() {
@@ -866,6 +872,7 @@ const logoList = ref<string[]>([
     > .insight-title {
       font-size: 56px;
       font-weight: 800;
+      letter-spacing: -0.72px;
 
       @include minimize() {
         font-size: 32px;
@@ -893,7 +900,7 @@ const logoList = ref<string[]>([
       }
 
       > .insight-item {
-        margin: 0 40px;
+        margin: 0 24px;
       }
 
       > .insight-item:hover {

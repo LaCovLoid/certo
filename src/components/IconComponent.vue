@@ -26,7 +26,7 @@ defineProps<{
 
   > .title {
     display: block;
-    margin-top: 24px;
+    margin-top: 20px;
     margin-bottom: 24px;
 
     font-size: 19px;

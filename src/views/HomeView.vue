@@ -35,7 +35,7 @@
             v-for="(item, index) in reviewList"
             :key="index"
             :value="item"
-            class="slide"
+            class="slide-item"
           >
           </Review>
         </div>
@@ -44,7 +44,7 @@
             v-for="(item, index) in reviewList"
             :key="index"
             :value="item"
-            class="slide"
+            class="slide-item"
           >
           </Review>
         </div>
@@ -385,8 +385,8 @@ const logoList = ref<string[]>([
 
     > .slide-container {
       width: 100%;
-      margin-top: 72px;
-      margin-bottom: 72px;
+      padding-top: 72px;
+      padding-bottom: 72px;
 
       overflow: hidden;
       position: relative;
@@ -403,15 +403,17 @@ const logoList = ref<string[]>([
         display: flex;
         animation: moveLeft 60s linear infinite;
 
-        > .slide {
+        > .slide-item {
           margin-left: 15px;
           margin-right: 15px;
+
+          box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
         }
       }
 
       > .second-slide-track {
         position: absolute;
-        top: 0;
+        top: 72px;
         left: (400px+30px) * 5;
       }
     }
@@ -525,8 +527,8 @@ const logoList = ref<string[]>([
       > .security-description {
         width: 100%;
         padding-right: 75px;
-        margin-top: 43px;
-        margin-bottom: 76px;
+        margin-top: 36px;
+        margin-bottom: 74px;
 
         display: block;
 
@@ -563,17 +565,17 @@ const logoList = ref<string[]>([
       }
 
       > .img-security {
-        width: 510px;
+        max-width: 515px;
         height: auto;
         margin-left: 39px;
 
-        transform: translateY(20px);
+        transform: translate(-7px, 7px);
 
         @include minimize() {
           width: 386px;
           margin-left: 0;
 
-          transform: translateX(-60px);
+          transform: translate(-95px, 30px);
         }
       }
     }
@@ -604,6 +606,8 @@ const logoList = ref<string[]>([
 
       font-size: 36px;
       font-weight: 800;
+      letter-spacing: -0.72px;
+      line-height: 45px;
 
       @include minimize() {
         width: 388px;

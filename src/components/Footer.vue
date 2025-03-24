@@ -2,7 +2,7 @@
   <div class="footer-container">
     <div class="top">
       <div class="left">
-        <span class="left-title">Scan.Detect.Remove.</span>
+        <span class="left-title">Scan. Detect. Remove.</span>
         <div class="sns-list">
           <img class="sns-icon" src="@/assets/images/icon/twitter.png" />
           <img class="sns-icon" src="@/assets/images/icon/facebook.png" />
@@ -25,11 +25,26 @@
         <span class="center-title">Certo</span>
         <div class="whiteline"></div>
         <div class="menu-container">
-          <a href="/" class="menu-item">- iPhone</a>
-          <a href="/" class="menu-item">- Android</a>
-          <a href="/" class="menu-item">- Help</a>
-          <a href="/" class="menu-item">- About</a>
-          <a href="/" class="menu-item">- Insight</a>
+          <a href="/" class="menu-item"
+            ><div class="hyphen"></div>
+            iPhone</a
+          >
+          <a href="/" class="menu-item"
+            ><div class="hyphen"></div>
+            Android</a
+          >
+          <a href="/" class="menu-item"
+            ><div class="hyphen"></div>
+            Help</a
+          >
+          <a href="/" class="menu-item"
+            ><div class="hyphen"></div>
+            About</a
+          >
+          <a href="/" class="menu-item"
+            ><div class="hyphen"></div>
+            Insights</a
+          >
         </div>
       </div>
       <div class="right">
@@ -41,7 +56,7 @@
           </span>
           <div class="input-container">
             <input class="input-area" placeholder="Email address" />
-            <span class="submit-bt">submit</span>
+            <span class="submit-bt">Submit</span>
           </div>
         </div>
       </div>
@@ -95,9 +110,11 @@
     > .left {
       max-width: 312px;
       width: 100%;
+      padding-top: 8px;
 
       font-size: 11px;
       font-weight: 200;
+      line-height: 15px;
 
       @include minimize() {
         margin-top: 82px;
@@ -123,7 +140,7 @@
 
         > .sns-icon {
           width: 36px;
-          margin-right: 40px;
+          margin-right: 38px;
         }
       }
 
@@ -136,7 +153,7 @@
         }
 
         > .url-text {
-          margin-right: 40px;
+          margin-right: 26px;
           color: #ffffff;
         }
       }
@@ -159,6 +176,7 @@
       }
 
       > .center-title {
+        padding-top: 2px;
         font-size: 35px;
         font-weight: 700;
       }
@@ -166,24 +184,44 @@
       > .whiteline {
         width: 100%;
         height: 1px;
-        margin: 30px 0;
-
+        margin-top: 25px;
+        margin-bottom: 50px;
         border-bottom: #ffffff 1px solid;
+
+        @include minimize() {
+          margin-top: 15px;
+          margin-bottom: 20px;
+        }
       }
 
       > .menu-container {
         width: 100%;
-        margin-top: 50px;
+        height: auto;
 
         > .menu-item {
-          margin: 20px 0;
+          padding: 12.5px 0;
 
           display: block;
 
           color: #ffc247;
           font-size: 19px;
-          font-weight: 700;
+          font-weight: 800;
           text-decoration: none;
+
+          @include minimize() {
+            padding: 9px 0;
+          }
+
+          > .hyphen {
+            margin-bottom: 5px;
+            margin-right: 18px;
+            display: inline-block;
+
+            width: 20px;
+            height: 1px;
+            border: 1px solid #ffc247;
+            vertical-align: middle;
+          }
         }
       }
     }
@@ -214,17 +252,28 @@
         background-size: contain;
         background-color: #ffc247;
 
+        @include minimize() {
+          background: url("@/assets/images/logo/certo_c.png") no-repeat
+            calc(100% - 60px) top / cover;
+          background-size: contain;
+          background-color: #ffc247;
+          background-size: auto calc(100% - 10px);
+        }
+
         > .right-title {
           display: block;
           font-size: 23px;
-          font-weight: 700;
+          font-weight: 800;
+          letter-spacing: -0.72px;
         }
 
         > .right-subtitle {
-          margin: 30px 0;
+          margin-top: 20px;
+          margin-bottom: 38px;
           display: block;
 
           font-size: 15px;
+          line-height: 20px;
         }
 
         > .input-container {
@@ -236,9 +285,9 @@
             height: 35px;
             padding-left: 15px;
 
-            flex: 7;
+            flex: 82;
 
-            font-size: 16px;
+            font-size: 15px;
             line-height: 35px;
 
             border: none;
@@ -254,13 +303,13 @@
 
           > .input-container::placeholder {
             font-family: "Inter", sans-serif;
-            color: #888;
+            color: #02033b;
           }
 
           > .submit-bt {
             height: 35px;
             padding: 7px 30px;
-            flex: 3;
+            flex: 18;
 
             text-align: center;
             background-color: #02033b;
@@ -281,7 +330,7 @@
   > .bottom {
     max-width: 1056px;
     margin: 0 auto;
-    padding-top: 188px;
+    padding-top: 180px;
 
     @include minimize() {
       padding-top: 21px;

@@ -393,8 +393,8 @@ const logoList = ref<string[]>([
       position: relative;
 
       @include minimize() {
-        margin-top: 30px;
-        margin-bottom: 78px;
+        padding-top: 30px;
+        padding-bottom: 78px;
       }
 
       > .first-slide-track,
@@ -416,6 +416,10 @@ const logoList = ref<string[]>([
         position: absolute;
         top: 72px;
         left: (400px+30px) * 5;
+
+        @include minimize() {
+          top: 30px;
+        }
       }
     }
 
@@ -678,6 +682,7 @@ const logoList = ref<string[]>([
 
     @include minimize() {
       padding-top: 32px;
+      padding-bottom: 32px;
       padding-left: 14px;
       padding-right: 14px;
 

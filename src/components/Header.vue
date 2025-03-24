@@ -80,6 +80,8 @@ onUnmounted(() => {
 
   @include minimize() {
     height: 70px;
+    background: none;
+    background-color: #f3f8ff;
   }
 
   > .left {
@@ -149,7 +151,7 @@ onUnmounted(() => {
         @include minimize() {
           width: 100%;
 
-          padding-top: 24.5px;
+          padding-top: 25px;
           padding-bottom: 24.5px;
           padding-left: 24.5px;
 
@@ -230,7 +232,7 @@ onUnmounted(() => {
   position: fixed;
   inset: 0; /* top, right, bottom, left 0 이랑 같은거. 배경 전체 뒤덮는것 */
 
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
   z-index: 5;
 

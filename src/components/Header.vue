@@ -75,12 +75,7 @@ onUnmounted(() => {
   justify-content: space-between;
   position: relative;
 
-  /*bottom linear 투명도 조절을 위해 이번만 바꿔 사용 #F3F8FF,#E7EFFA  */
-  background: linear-gradient(
-    to bottom,
-    rgba(243, 248, 255, 1) 75%,
-    rgba(231, 239, 250, 0.8) 100%
-  );
+  background: linear-gradient(to bottom, #f3f8ff 75%, #e7effa 100%);
   z-index: 10;
 
   @include minimize() {

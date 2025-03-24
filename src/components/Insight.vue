@@ -29,13 +29,13 @@ defineProps<{
   overflow: hidden;
 
   > .bt {
-    padding: 10px 20px;
-    left: 20px;
-    top: 20px;
+    padding: 12px 19px;
+    left: 23px;
+    top: 24px;
 
     position: absolute;
     background-color: #ffffff;
-    border-radius: 20px;
+    border-radius: 25px;
     font-weight: 800;
   }
 
@@ -46,15 +46,19 @@ defineProps<{
   }
 
   > .bottom {
-    padding: 50px;
+    padding-left: 48px;
+    padding-right: 46px;
+    padding-top: 44px;
+    padding-bottom: 44px;
     text-align: left;
 
     > .title {
       display: block;
-      margin-bottom: 20px;
+      padding-right: 25px;
+      margin-bottom: 25px;
 
       font-size: 23px;
-      font-weight: 800;
+      font-weight: 700;
       line-height: 30px;
       letter-spacing: 0;
     }

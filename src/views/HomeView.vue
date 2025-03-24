@@ -223,6 +223,7 @@ const logoList = ref<string[]>([
 
     overflow: hidden;
     z-index: 0;
+    background-color: #f3f8ff;
 
     @include minimize() {
       height: auto;
@@ -237,9 +238,9 @@ const logoList = ref<string[]>([
 
       position: absolute;
       bottom: -885px;
-      left: -875px;
+      left: -880px;
 
-      background: radial-gradient(circle, #ffffff, #e7effa);
+      background: radial-gradient(circle, #ffffff 30%, #e7effa 70%);
       border-radius: 1000%;
       z-index: -1;
 

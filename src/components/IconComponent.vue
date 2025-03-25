@@ -1,8 +1,19 @@
 <template>
   <div class="icon-container">
     <img :src="value.image" class="icon-image" />
-    <span class="title">{{ value.title }}</span>
-    <span class="text">{{ value.text }}</span>
+    <span
+      class="title"
+      :style="{
+        fontSize: (value.titleFontSize ?? 19) + 'px',
+        marginBottom: (value.titleMarginBottom ?? 24) + 'px',
+      }"
+      >{{ value.title }}</span
+    >
+    <span
+      class="text"
+      :style="{ fontSize: (value.descriptionFontSize ?? 16) + 'px' }"
+      >{{ value.description }}</span
+    >
   </div>
 </template>
 
@@ -29,7 +40,6 @@ defineProps<{
     margin-top: 20px;
     margin-bottom: 24px;
 
-    font-size: 19px;
     font-weight: 800;
     line-height: 25px;
     letter-spacing: -0.4px;
@@ -37,7 +47,6 @@ defineProps<{
   > .text {
     display: block;
 
-    font-size: 16px;
     line-height: 24px;
     letter-spacing: 0;
   }

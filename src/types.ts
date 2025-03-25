@@ -16,5 +16,8 @@ export interface InsightsDataType {
 export interface IconDataType {
   image: string;
   title: string;
-  text: string;
+  titleFontSize?: number;
+  titleMarginBottom?: number;
+  description: string;
+  descriptionFontSize?: number;
 }

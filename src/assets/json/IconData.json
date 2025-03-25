@@ -3,32 +3,38 @@
     {
       "image": "/src/assets/images/icon/eye.png",
       "title": "Spyware detection",
-      "text": "Our advanced spyware detection engine can identify if a device contains spyware or bugging software."
+      "description": "Our advanced spyware detection engine can identify if a device contains spyware or bugging software."
     },
     {
       "image": "/src/assets/images/icon/expansion.png",
       "title": "Keylogger detection",
-      "text": "Find malicious keyboards installed on your device that could allow someone to record things you type (e.g. passwords)."
+      "description": "Find malicious keyboards installed on your device that could allow someone to record things you type (e.g. passwords).",
+
+      "descriptionFontSize": 15
     },
     {
       "image": "/src/assets/images/icon/tracking.png",
       "title": "Find tracking apps",
-      "text": "Check which apps can access your location, microphone or camera. Get alerted if a known tracking app is installed."
+      "description": "Check which apps can access your location, microphone or camera. Get alerted if a known tracking app is installed."
     },
     {
       "image": "/src/assets/images/icon/check.png",
       "title": "OS integrity check",
-      "text": "Analyze your operating system for signs of tampering that could compromise security, such as Jailbreaking."
+      "description": "Analyze your operating system for signs of tampering that could compromise security, such as Jailbreaking."
     },
     {
       "image": "/src/assets/images/icon/sign_x.png",
       "title": "Threat removal",
-      "text": "Our intelligent scan will either safely remove threats for you or provide easy-to-follow instructions."
+      "description": "Our intelligent scan will either safely remove threats for you or provide easy-to-follow instructions.",
+
+      "titleMarginBottom": 12
     },
     {
       "image": "/src/assets/images/icon/wheel.png",
       "title": "Easy to use",
-      "text": "We create easy to use apps that can check your device for vulnerabilities in a matter of minutes."
+      "description": "We create easy to use apps that can check your device for vulnerabilities in a matter of minutes.",
+
+      "titleFontSize": 18
     }
   ]
 }

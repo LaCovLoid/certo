@@ -3,8 +3,16 @@
     <span class="bt">{{ value.btText }}</span>
     <img :src="value.image" class="image" />
     <div class="bottom">
-      <span class="title">{{ value.title }}</span>
-      <span class="text">{{ value.text }}</span>
+      <span
+        class="title"
+        :style="{ fontSize: (value.titleFontSize ?? 23) + 'px' }"
+        >{{ value.title }}</span
+      >
+      <span
+        class="description"
+        :style="{ fontSize: (value.descriptionFontSize ?? 16) + 'px' }"
+        >{{ value.description }}</span
+      >
     </div>
   </div>
 </template>
@@ -30,7 +38,7 @@ defineProps<{
 
   > .bt {
     padding: 12px 19px;
-    left: 23px;
+    left: 24px;
     top: 24px;
 
     position: absolute;
@@ -57,14 +65,12 @@ defineProps<{
       padding-right: 25px;
       margin-bottom: 25px;
 
-      font-size: 23px;
       font-weight: 700;
       line-height: 30px;
       letter-spacing: 0;
     }
 
-    > .text {
-      font-size: 16px;
+    > .description {
       line-height: 24px;
       letter-spacing: 0;
     }

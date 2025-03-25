@@ -3,12 +3,16 @@ export interface ReviewDataType {
   score: number;
   text: string;
 }
+
 export interface InsightsDataType {
+  btText: string;
   image: string;
   title: string;
-  text: string;
-  btText: string;
+  titleFontSize?: number;
+  description: string;
+  descriptionFontSize?: number;
 }
+
 export interface IconDataType {
   image: string;
   title: string;

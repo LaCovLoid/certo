@@ -129,7 +129,7 @@
         <span class="help-description">
           Help topics, getting started guides and FAQs.
         </span>
-        <WhiteButton text="Visit help center" class="help-bt" />
+        <WhiteButton class="help-bt">Visit help center</WhiteButton>
       </div>
     </div>
     <!-- ----------------------------------- -->
@@ -142,12 +142,13 @@
     <!-- ----------------------------------- -->
     <div class="insight-container">
       <span class="insight-title">Latest insights</span>
-      <div class="insight-item-list">
+      <div class="insight-item-list" :style="carouselStyle">
         <Insights
           v-for="(item, index) in insightsList"
           :key="index"
           :value="item"
           class="insight-item"
+          @click="moveInsightCenter(index)"
         />
       </div>
       <OrangeButton class="insight-bt">View all insight</OrangeButton>
@@ -156,7 +157,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, onMounted, ref, type Ref } from "vue";
 
 import insightsData from "../assets/json/InsightsData.json";
 import reviewData from "../assets/json/ReviewData.json";
@@ -174,6 +175,36 @@ const insightsList = ref<InsightsDataType[]>(insightsData.insights);
 const reviewList = ref<ReviewDataType[]>(reviewData.reviews);
 const iconDataList = ref<IconDataType[]>(iconData.icons);
 const logoList = ref<string[]>(iconData.logos);
+
+/////////////////////
+const insightCenterNumber: Ref<number> = ref(1);
+
+const moveInsightCenter = (index: number) => {
+  insightCenterNumber.value = index;
+};
+
+const screenWidth = ref(window.innerWidth);
+
+// 화면 크기 변화를 감지하기 위한 코드
+onMounted(() => {
+  window.addEventListener("resize", updateWidth);
+});
+
+const updateWidth = () => {
+  screenWidth.value = window.innerWidth;
+};
+
+// 창 크기가 800px 이하일 때만 스타일 적용
+const carouselStyle = computed(() => {
+  if (screenWidth.value <= 1000) {
+    return {
+      transform: "translateX(" + -(insightCenterNumber.value - 1) * 336 + "px)",
+      transition: "transform 0.3s ease",
+    };
+  } else {
+    return {}; // 화면 크기가 1000px 이상일 때는 기본 상태
+  }
+});
 </script>
 
 <style lang="scss" scoped>
@@ -190,16 +221,16 @@ const logoList = ref<string[]>(iconData.logos);
 
 @keyframes carousel {
   10% {
-    transform: translateX(-400px);
+    transform: translateX(-360px);
   }
   33% {
-    transform: translateX(-400px);
+    transform: translateX(-360px);
   }
   43% {
-    transform: translateX(400px);
+    transform: translateX(360px);
   }
   66% {
-    transform: translateX(400px);
+    transform: translateX(360px);
   }
   76% {
     transform: translateX(0);
@@ -898,16 +929,22 @@ const logoList = ref<string[]>(iconData.logos);
       scrollbar-width: none; /* Firefox에서 스크롤바 숨기기 */
       -ms-overflow-style: none; /* IE/Edge에서 스크롤바 숨기기 */
 
+      transition: transform 0.3s ease;
+
       @include minimize() {
         padding-top: 53px;
         padding-bottom: 77px;
 
         overflow: visible;
-        animation: carousel 20s infinite;
+        //animation: carousel 20s infinite;
       }
 
       > .insight-item {
         margin: 0 24px;
+
+        @include minimize() {
+          margin: 0 12px;
+        }
       }
 
       > .insight-item:hover {

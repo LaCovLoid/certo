@@ -4,7 +4,7 @@
       <img class="logo" src="@/assets/images/logo/certo.png" />
     </div>
     <div class="right">
-      <div class="menu-list" v-if="isMenuVisible || isOpen">
+      <div class="menu-list" :class="{ show: isVisible }">
         <router-link to="/" class="menu-item">iPhone</router-link>
         <router-link to="/" class="menu-item">Android</router-link>
         <router-link to="/" class="menu-item">Help</router-link>
@@ -16,7 +16,7 @@
       <img
         src="../assets/images/icon/hamburger.png"
         class="hamburger-bt"
-        v-if="!isOpen"
+        v-if="!isVisible"
         @click="toggleMenu"
       />
       <img
@@ -27,39 +27,17 @@
       />
     </div>
   </div>
-  <div class="overlay" v-if="isOpen"></div>
+  <div class="overlay" v-if="isVisible"></div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref } from "vue";
 
-const isMenuVisible = ref(true);
-const isOpen = ref(false);
-const windowWidth = ref(window.innerWidth);
+const isVisible = ref(false);
 
 const toggleMenu = () => {
-  isOpen.value = !isOpen.value;
+  isVisible.value = !isVisible.value;
 };
-
-const updateWidth = () => {
-  windowWidth.value = window.innerWidth;
-  if (window.innerWidth >= 1000) {
-    isMenuVisible.value = true;
-    isOpen.value = false;
-  }
-  if (window.innerWidth <= 1000) {
-    isMenuVisible.value = false;
-  }
-};
-
-onMounted(() => {
-  window.addEventListener("resize", updateWidth);
-  updateWidth();
-});
-
-onUnmounted(() => {
-  window.removeEventListener("resize", updateWidth);
-});
 </script>
 
 <style lang="scss" scoped>
@@ -130,6 +108,7 @@ onUnmounted(() => {
         width: 100%;
         padding-top: 70px + 32px - 24.5px;
 
+        display: none;
         flex-direction: column;
         justify-content: left;
 
@@ -206,6 +185,10 @@ onUnmounted(() => {
         }
       }
     }
+    .menu-list.show {
+      display: flex;
+    }
+
     > .hamburger-bt {
       width: auto;
       height: 100%;

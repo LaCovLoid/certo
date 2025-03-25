@@ -1,12 +1,8 @@
 <template>
-  <span class="text">{{ text }}</span>
+  <span class="text"><slot></slot></span>
 </template>
 
-<script setup lang="ts">
-defineProps<{
-  text: string;
-}>();
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss" scoped>
 @use "@/global.scss" as *;

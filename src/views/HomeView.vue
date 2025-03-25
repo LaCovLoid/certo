@@ -14,8 +14,12 @@
           you to scan, detect and remove threats from your iPhone and Android
           devices.
         </span>
-        <OrangeButton text="Get Certo for iPhone" class="privacy-bt-iphone" />
-        <WhiteButton text="Get Certo for Android" class="privacy-bt-android" />
+        <OrangeButton class="privacy-bt-iphone"
+          >Get Certo for iPhone</OrangeButton
+        >
+        <WhiteButton class="privacy-bt-android"
+          >Get Certo for Android</WhiteButton
+        >
       </div>
       <div class="privacy-right">
         <img
@@ -73,8 +77,12 @@
           products have helped countless people safeguard their devices and find
           peace of mind.
         </span>
-        <OrangeButton text="Get Certo for iPhone" class="security-bt-iphone" />
-        <WhiteButton text="Get Certo for Android" class="security-bt-android" />
+        <OrangeButton class="security-bt-iphone"
+          >Get Certo for iPhone</OrangeButton
+        >
+        <WhiteButton class="security-bt-android"
+          >Get Certo for Android</WhiteButton
+        >
       </div>
       <div class="security-right">
         <img
@@ -97,8 +105,8 @@
             class="icon-item"
           />
         </div>
-        <OrangeButton text="Get Certo for iPhone" class="icon-bt-iphone" />
-        <WhiteButton text="Get Certo for Android" class="icon-bt-android" />
+        <OrangeButton class="icon-bt-iphone">Get Certo for iPhone</OrangeButton>
+        <WhiteButton class="icon-bt-android">Get Certo for Android</WhiteButton>
       </div>
     </div>
     <!-- ----------------------------------- -->
@@ -128,8 +136,8 @@
     <div class="spying-container">
       <span class="spying-title">Is someone spying on your phone?</span>
       <span class="spying-description">Find out with Certo</span>
-      <OrangeButton text="Get Certo for iPhone" class="spying-bt-iphone" />
-      <WhiteButton text="Get Certo for Android" class="spying-bt-android" />
+      <OrangeButton class="spying-bt-iphone">Get Certo for iPhone</OrangeButton>
+      <WhiteButton class="spying-bt-android">Get Certo for Android</WhiteButton>
     </div>
     <!-- ----------------------------------- -->
     <div class="insight-container">
@@ -142,7 +150,7 @@
           class="insight-item"
         />
       </div>
-      <OrangeButton text="View all insight" class="insight-bt" />
+      <OrangeButton class="insight-bt">View all insight</OrangeButton>
     </div>
   </div>
 </template>
@@ -165,14 +173,7 @@ import type { ReviewDataType, InsightsDataType, IconDataType } from "../types";
 const insightsList = ref<InsightsDataType[]>(insightsData.insights);
 const reviewList = ref<ReviewDataType[]>(reviewData.reviews);
 const iconDataList = ref<IconDataType[]>(iconData.icons);
-const logoList = ref<string[]>([
-  "/src/assets/images/logo/cnbc.png",
-  "/src/assets/images/logo/new_york_post.png",
-  "/src/assets/images/logo/financial_times.png",
-  "/src/assets/images/logo/readers_digest.png",
-  "/src/assets/images/logo/zd_net.png",
-  "/src/assets/images/logo/wired.png",
-]);
+const logoList = ref<string[]>(iconData.logos);
 </script>
 
 <style lang="scss" scoped>

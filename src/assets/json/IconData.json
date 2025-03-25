@@ -36,5 +36,14 @@
 
       "titleFontSize": 18
     }
+  ],
+
+  "logos": [
+    "/src/assets/images/logo/cnbc.png",
+    "/src/assets/images/logo/new_york_post.png",
+    "/src/assets/images/logo/financial_times.png",
+    "/src/assets/images/logo/readers_digest.png",
+    "/src/assets/images/logo/zd_net.png",
+    "/src/assets/images/logo/wired.png"
   ]
 }

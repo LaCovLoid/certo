@@ -1,15 +1,11 @@
 <template>
-  <span class="text"
-    >{{ text }}
+  <span class="text">
+    <slot></slot>
     <img src="@/assets/images/icon/chevron_right.svg" class="chevron-right" />
   </span>
 </template>
 
-<script setup lang="ts">
-defineProps<{
-  text: string;
-}>();
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss" scoped>
 @use "@/global.scss" as *;

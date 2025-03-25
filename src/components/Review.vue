@@ -21,11 +21,14 @@ defineProps<{
 
 <style lang="scss" scoped>
 .review-container {
-  width: 400px;
-  height: 305px;
   min-width: 400px;
   max-width: 400px;
-  padding: 40px 50px;
+  height: 305px;
+
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 50px;
+  padding-right: 50px;
 
   background-color: #ffffff;
   border-radius: 50px;
@@ -34,12 +37,17 @@ defineProps<{
     width: 24px;
     height: 24px;
   }
+
   > .text {
+    margin-top: 20px;
+    margin-bottom: 18px;
+
     display: block;
-    margin: 20px 0 18px 0;
   }
+
   > .writer {
     display: block;
+
     font-weight: 800;
   }
 }

@@ -4,9 +4,12 @@
       <div class="left">
         <span class="left-title">Scan. Detect. Remove.</span>
         <div class="sns-list">
-          <img class="sns-icon" src="@/assets/images/icon/twitter.png" />
-          <img class="sns-icon" src="@/assets/images/icon/facebook.png" />
-          <img class="sns-icon" src="@/assets/images/icon/youtube.png" />
+          <img
+            v-for="(item, index) in snsList"
+            :key="index"
+            :src="'/src/assets/images/icon/' + item"
+            class="sns-icon"
+          />
         </div>
         <div class="url-container">
           <a class="url-text" href="/">Privacy Police</a>
@@ -25,26 +28,17 @@
         <span class="center-title">Certo</span>
         <div class="whiteline"></div>
         <div class="menu-container">
-          <a href="/" class="menu-item"
+          <router-link
+            class="menu-item"
+            v-for="(item, index) in menuList"
+            :key="index"
+            :to="item.url"
+            :style="{
+              fontSize: (item.fontSize ?? 19) + 'px',
+            }"
             ><div class="hyphen"></div>
-            iPhone</a
-          >
-          <a href="/" class="menu-item"
-            ><div class="hyphen"></div>
-            Android</a
-          >
-          <a href="/" class="menu-item"
-            ><div class="hyphen"></div>
-            Help</a
-          >
-          <a href="/" class="menu-item"
-            ><div class="hyphen"></div>
-            About</a
-          >
-          <a href="/" class="menu-item"
-            ><div class="hyphen"></div>
-            Insights</a
-          >
+            {{ item.text }}
+          </router-link>
         </div>
       </div>
       <div class="right">
@@ -72,7 +66,18 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+
+const snsList = ref<string[]>(["twitter.png", "facebook.png", "youtube.png"]);
+const menuList = ref<{ text: string; url: string; fontSize?: number }[]>([
+  { text: "iPhone", url: "/" },
+  { text: "Android", url: "/" },
+  { text: "Help", url: "/" },
+  { text: "About", url: "/" },
+  { text: "Insights", url: "/", fontSize: 18 },
+]);
+</script>
 
 <style lang="scss" scoped>
 @use "@/global.scss" as *;
@@ -80,10 +85,12 @@
 .footer-container {
   max-width: 1440px;
   width: 100%;
+
   padding-top: 96px;
   padding-bottom: 96px;
   padding-left: 20px;
   padding-right: 20px;
+
   margin: 0 auto;
 
   color: #ffffff;
@@ -98,6 +105,7 @@
 
   > .top {
     max-width: 1056px;
+
     margin: 0 auto;
 
     display: flex;
@@ -110,6 +118,7 @@
     > .left {
       max-width: 312px;
       width: 100%;
+
       padding-top: 8px;
 
       font-size: 11px;
@@ -140,13 +149,14 @@
 
         > .sns-icon {
           width: 36px;
+
           margin-right: 38px;
         }
       }
 
       > .url-container {
-        margin-right: 50px;
         margin-bottom: 50px;
+        margin-right: 50px;
 
         @include minimize() {
           margin-bottom: 23px;
@@ -162,21 +172,25 @@
     > .center {
       max-width: 188px;
       width: 100%;
+
       margin-left: 60px;
       margin-right: 60px;
 
       @include minimize() {
         max-width: 339px;
+
+        padding: 0;
+
         margin-top: 32px;
         margin-left: 30px;
         margin-right: 31px;
-        padding: 0;
 
         order: 1;
       }
 
       > .center-title {
         padding-top: 2px;
+
         font-size: 35px;
         font-weight: 700;
       }
@@ -184,8 +198,10 @@
       > .whiteline {
         width: 100%;
         height: 1px;
+
         margin-top: 25px;
         margin-bottom: 50px;
+
         border-bottom: #ffffff 1px solid;
 
         @include minimize() {
@@ -199,7 +215,8 @@
         height: auto;
 
         > .menu-item {
-          padding: 12.5px 0;
+          padding-top: 12.5px;
+          padding-bottom: 12.5px;
 
           display: block;
 
@@ -209,18 +226,21 @@
           text-decoration: none;
 
           @include minimize() {
-            padding: 9px 0;
+            padding-top: 9px;
+            padding-bottom: 9px;
           }
 
           > .hyphen {
-            margin-bottom: 5px;
-            margin-right: 18px;
-            display: inline-block;
-
             width: 20px;
             height: 1px;
-            border: 1px solid #ffc247;
+
+            margin-bottom: 5px;
+            margin-right: 18px;
+
+            display: inline-block;
+
             vertical-align: middle;
+            border: 1px solid #ffc247;
           }
         }
       }
@@ -262,6 +282,7 @@
 
         > .right-title {
           display: block;
+
           font-size: 23px;
           font-weight: 800;
           letter-spacing: -0.72px;
@@ -270,6 +291,7 @@
         > .right-subtitle {
           margin-top: 20px;
           margin-bottom: 38px;
+
           display: block;
 
           font-size: 15px;
@@ -278,11 +300,13 @@
 
         > .input-container {
           width: 100%;
+
           display: flex;
 
           > .input-area {
             max-width: 254.8px;
             height: 35px;
+
             padding-left: 15px;
 
             flex: 82;
@@ -308,7 +332,12 @@
 
           > .submit-bt {
             height: 35px;
-            padding: 7px 30px;
+
+            padding-top: 7px;
+            padding-bottom: 7px;
+            padding-left: 30px;
+            padding-right: 30px;
+
             flex: 18;
 
             text-align: center;
@@ -317,10 +346,10 @@
             font-size: 15px;
             font-weight: 700;
 
+            cursor: pointer;
             vertical-align: top;
             border-top-right-radius: 20px;
             border-bottom-right-radius: 20px;
-            cursor: pointer;
           }
         }
       }
@@ -329,8 +358,10 @@
 
   > .bottom {
     max-width: 1056px;
-    margin: 0 auto;
+
     padding-top: 180px;
+
+    margin: 0 auto;
 
     @include minimize() {
       padding-top: 21px;
@@ -341,6 +372,7 @@
 
     > .text-apple {
       max-width: 539px;
+
       display: block;
 
       font-size: 12px;

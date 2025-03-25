@@ -36,9 +36,10 @@ defineProps<{
   }
 
   > .title {
-    display: block;
     margin-top: 20px;
     margin-bottom: 24px;
+
+    display: block;
 
     font-weight: 800;
     line-height: 25px;

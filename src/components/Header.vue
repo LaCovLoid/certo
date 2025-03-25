@@ -47,17 +47,20 @@ const toggleMenu = () => {
   max-width: 1440px;
   width: 100%;
   height: 102px;
+
   margin: 0 auto;
 
   display: flex;
   justify-content: space-between;
+
   position: relative;
+  z-index: 10;
 
   background: linear-gradient(to bottom, #f3f8ff 75%, #e7effa 100%);
-  z-index: 10;
 
   @include minimize() {
     height: 70px;
+
     background: none;
     background-color: #f3f8ff;
   }
@@ -65,6 +68,7 @@ const toggleMenu = () => {
   > .left {
     > .logo {
       height: 100%;
+
       padding-top: 24px;
       padding-bottom: 24px;
       padding-left: 120px;
@@ -78,14 +82,20 @@ const toggleMenu = () => {
       @include minimize() {
         width: auto;
         height: 100%;
+
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-left: 18px;
+        padding-right: 18px;
+
         margin: 0;
-        padding: 16px 18px;
       }
     }
   }
   > .right {
     width: 653px;
     height: 100%;
+
     padding-right: 120px;
 
     display: flex;
@@ -102,10 +112,12 @@ const toggleMenu = () => {
     > .menu-list {
       display: flex;
       justify-content: right;
+
       position: absolute;
 
       @include minimize() {
         width: 100%;
+
         padding-top: 70px + 32px - 24.5px;
 
         display: none;
@@ -116,16 +128,19 @@ const toggleMenu = () => {
       }
 
       > .menu-item {
-        padding: 38.5px 24px;
+        padding-top: 38.5px;
+        padding-bottom: 38.5px;
+        padding-left: 24px;
+        padding-right: 24px;
 
         display: block;
+
+        z-index: 10;
 
         color: #000000;
         font-size: 19px;
         font-weight: 800;
         text-decoration: none;
-
-        z-index: 10;
 
         @include minimize() {
           width: 100%;
@@ -140,6 +155,7 @@ const toggleMenu = () => {
         > .arrow-bottom {
           width: 12px;
           height: 7px;
+
           margin-left: 9.11px;
 
           display: inline-block;
@@ -163,7 +179,8 @@ const toggleMenu = () => {
         padding-left: 20px;
         padding-right: 21px;
 
-        margin: auto 0;
+        margin-top: auto;
+        margin-bottom: auto;
         margin-left: 72px;
 
         color: #ffffff;
@@ -192,12 +209,13 @@ const toggleMenu = () => {
     > .hamburger-bt {
       width: auto;
       height: 100%;
+
       padding: 25px;
 
       display: none;
 
-      cursor: pointer;
       z-index: 10;
+      cursor: pointer;
 
       @include minimize() {
         display: block;
@@ -212,12 +230,13 @@ const toggleMenu = () => {
 
 .overlay {
   display: none;
+
   position: fixed;
   inset: 0; /* top, right, bottom, left 0 이랑 같은거. 배경 전체 뒤덮는것 */
+  z-index: 5;
 
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
-  z-index: 5;
 
   @include minimize() {
     display: block;

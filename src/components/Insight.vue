@@ -32,38 +32,45 @@ defineProps<{
   height: 534px;
 
   position: relative;
-  background-color: #ffffff;
-  border-radius: 50px;
+
   overflow: hidden;
+  border-radius: 50px;
+  background-color: #ffffff;
 
   > .bt {
     padding: 12px 19px;
+
+    position: absolute;
     left: 24px;
     top: 24px;
 
-    position: absolute;
-    background-color: #ffffff;
-    border-radius: 25px;
     font-weight: 800;
+
+    border-radius: 25px;
+    background-color: #ffffff;
   }
 
   > .image {
     width: 100%;
     height: auto;
+
     object-fit: cover;
   }
 
   > .bottom {
-    padding-left: 48px;
-    padding-right: 46px;
     padding-top: 44px;
     padding-bottom: 44px;
+    padding-left: 48px;
+    padding-right: 46px;
+
     text-align: left;
 
     > .title {
-      display: block;
       padding-right: 25px;
+
       margin-bottom: 25px;
+
+      display: block;
 
       font-weight: 700;
       line-height: 30px;

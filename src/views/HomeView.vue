@@ -1,6 +1,7 @@
 <template>
   <div class="home-container">
-    <!-- ----------------------------------- -->
+    <!-- ---------- Privacy-Container ---------- -->
+
     <div class="privacy-container">
       <div class="privacy-bg-circle"></div>
       <img
@@ -28,7 +29,9 @@
         />
       </div>
     </div>
-    <!-- ----------------------------------- -->
+
+    <!-- ---------- Review-Container ---------- -->
+
     <div class="review-container">
       <span class="review-title">
         Loved by thousands of iPhone and Android users alike
@@ -65,7 +68,9 @@
         </div>
       </div>
     </div>
-    <!-- ----------------------------------- -->
+
+    <!-- ---------- Security-Container ---------- -->
+
     <div class="security-container">
       <div class="security-left">
         <span class="security-title">
@@ -91,7 +96,9 @@
         />
       </div>
     </div>
-    <!-- ----------------------------------- -->
+
+    <!-- ---------- Icon-Container ---------- -->
+
     <div class="icon-container">
       <span class="icon-title">
         Get your freedom back, stop mobile spyware today
@@ -109,7 +116,9 @@
         <WhiteButton class="icon-bt-android">Get Certo for Android</WhiteButton>
       </div>
     </div>
-    <!-- ----------------------------------- -->
+
+    <!-- ---------- Story-Help-Container ---------- -->
+
     <div class="story-help-container">
       <div class="story-container">
         <span class="story-title">Read our story</span>
@@ -132,14 +141,18 @@
         <WhiteButton class="help-bt">Visit help center</WhiteButton>
       </div>
     </div>
-    <!-- ----------------------------------- -->
+
+    <!-- ---------- Spying-Container ---------- -->
+
     <div class="spying-container">
       <span class="spying-title">Is someone spying on your phone?</span>
       <span class="spying-description">Find out with Certo</span>
       <OrangeButton class="spying-bt-iphone">Get Certo for iPhone</OrangeButton>
       <WhiteButton class="spying-bt-android">Get Certo for Android</WhiteButton>
     </div>
-    <!-- ----------------------------------- -->
+
+    <!-- ---------- Insight-Container ---------- -->
+
     <div class="insight-container">
       <span class="insight-title">Latest insights</span>
       <div class="insight-item-list" :style="carouselStyle">
@@ -148,7 +161,7 @@
           :key="index"
           :value="item"
           class="insight-item"
-          @click="moveInsightCenter(index)"
+          @click="changeSelectedInsightItem(index)"
         />
       </div>
       <OrangeButton class="insight-bt">View all insight</OrangeButton>
@@ -176,33 +189,31 @@ const reviewList = ref<ReviewDataType[]>(reviewData.reviews);
 const iconDataList = ref<IconDataType[]>(iconData.icons);
 const logoList = ref<string[]>(iconData.logos);
 
-/////////////////////
-const insightCenterNumber: Ref<number> = ref(1);
-
-const moveInsightCenter = (index: number) => {
-  insightCenterNumber.value = index;
-};
-
 const screenWidth = ref(window.innerWidth);
+const selectedInsightItem: Ref<number> = ref(1);
 
-// 화면 크기 변화를 감지하기 위한 코드
 onMounted(() => {
   window.addEventListener("resize", updateWidth);
 });
 
+//창 크기 실시간 감지지
 const updateWidth = () => {
   screenWidth.value = window.innerWidth;
 };
 
-// 창 크기가 800px 이하일 때만 스타일 적용
+//insightItem의 클릭된 값 적용용
+const changeSelectedInsightItem = (index: number) => {
+  selectedInsightItem.value = index;
+};
+
+// insight-item-list에 carousel효과를 창1000px 이하에서만 적용되게게
 const carouselStyle = computed(() => {
   if (screenWidth.value <= 1000) {
     return {
-      transform: "translateX(" + -(insightCenterNumber.value - 1) * 336 + "px)",
-      transition: "transform 0.3s ease",
+      transform: "translateX(" + -(selectedInsightItem.value - 1) * 336 + "px)",
     };
   } else {
-    return {}; // 화면 크기가 1000px 이상일 때는 기본 상태
+    return {}; // 1000px 이하일땐 효과없앰
   }
 });
 </script>
@@ -219,27 +230,6 @@ const carouselStyle = computed(() => {
   }
 }
 
-@keyframes carousel {
-  10% {
-    transform: translateX(-360px);
-  }
-  33% {
-    transform: translateX(-360px);
-  }
-  43% {
-    transform: translateX(360px);
-  }
-  66% {
-    transform: translateX(360px);
-  }
-  76% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
 .home-container {
   max-width: 1440px;
   margin: 0 auto;
@@ -251,15 +241,20 @@ const carouselStyle = computed(() => {
     padding-right: 177px;
 
     display: flex;
+
     position: relative;
+    z-index: 0;
 
     overflow: hidden;
-    z-index: 0;
     background-color: #f3f8ff;
 
     @include minimize() {
       height: auto;
-      padding: 33px 26px;
+
+      padding-top: 33px;
+      padding-bottom: 33px;
+      padding-left: 26px;
+      padding-right: 26px;
 
       flex-wrap: wrap;
     }
@@ -271,10 +266,10 @@ const carouselStyle = computed(() => {
       position: absolute;
       bottom: -885px;
       left: -880px;
-
-      background: radial-gradient(circle, #ffffff 30%, #e7effa 70%);
-      border-radius: 1000%;
       z-index: -1;
+
+      border-radius: 1000%;
+      background: radial-gradient(circle, #ffffff 30%, #e7effa 70%);
 
       @include minimize() {
         transform: translate(-520px, -120px);
@@ -287,7 +282,6 @@ const carouselStyle = computed(() => {
       position: absolute;
       bottom: -102px;
       right: -93px;
-
       z-index: -1;
 
       @include minimize() {
@@ -301,14 +295,16 @@ const carouselStyle = computed(() => {
 
     > .privacy-left {
       width: calc(50% + 91px - 21.6px);
+
+      padding-top: 11.37px;
       padding-left: 15px;
       padding-right: 15px;
-      padding-top: 11.37px;
 
       text-align: left;
 
       @include minimize() {
         width: 100%;
+
         padding: 0px;
       }
 
@@ -338,9 +334,10 @@ const carouselStyle = computed(() => {
         line-height: 30px;
 
         @include minimize() {
+          padding-right: 30px;
+
           margin-top: 10px;
           margin-bottom: 40px;
-          padding-right: 30px;
 
           font-size: 17px;
           line-height: 25px;
@@ -367,6 +364,7 @@ const carouselStyle = computed(() => {
       @include minimize() {
         width: 100%;
         height: 350px;
+
         margin-top: 50px;
 
         top: 0;
@@ -376,10 +374,12 @@ const carouselStyle = computed(() => {
       > .img-privacy-phone {
         width: 241.5px;
         height: auto;
+
         margin-left: 40px;
 
         @include minimize() {
           width: 352px;
+
           margin: 0;
 
           transform: translateY(-65px);
@@ -389,6 +389,7 @@ const carouselStyle = computed(() => {
   }
   > .review-container {
     text-align: left;
+
     background: linear-gradient(to bottom, #f7c95f, #fdb235);
 
     @include minimize() {
@@ -397,8 +398,10 @@ const carouselStyle = computed(() => {
 
     > .review-title {
       max-width: 609px;
+
       padding-top: 83px;
       padding-right: 45.58px;
+
       margin-left: 96px;
 
       display: block;
@@ -409,20 +412,23 @@ const carouselStyle = computed(() => {
       letter-spacing: -0.72px;
 
       @include minimize() {
-        margin: 0;
         padding-top: 32px;
         padding-left: 24px;
         padding-right: 35px;
+
+        margin: 0;
       }
     }
 
     > .slide-container {
       width: 100%;
+
       padding-top: 72px;
       padding-bottom: 72px;
 
-      overflow: hidden;
       position: relative;
+
+      overflow: hidden;
 
       @include minimize() {
         padding-top: 30px;
@@ -457,6 +463,7 @@ const carouselStyle = computed(() => {
 
     > .logo-container {
       width: 100%;
+
       padding-left: 96px;
       padding-right: 96px;
       padding-bottom: 84px;
@@ -481,6 +488,7 @@ const carouselStyle = computed(() => {
 
         @include minimize() {
           width: 100%;
+
           margin-bottom: 36px;
 
           text-align: center;
@@ -488,10 +496,10 @@ const carouselStyle = computed(() => {
       }
 
       > .logo-grid-container {
-        display: grid;
         padding-left: 42.8px;
         padding-right: 42.8px;
 
+        display: grid;
         grid-auto-flow: column;
         column-gap: 36px;
         row-gap: 59px;
@@ -511,7 +519,11 @@ const carouselStyle = computed(() => {
 
   > .security-container {
     width: 100%;
-    padding: 86px 132px;
+
+    padding-top: 86px;
+    padding-bottom: 86px;
+    padding-left: 132px;
+    padding-right: 132px;
 
     display: flex;
     flex-wrap: wrap;
@@ -528,12 +540,14 @@ const carouselStyle = computed(() => {
 
     > .security-left {
       width: 50%;
+
       padding-left: 60px;
 
       text-align: left;
 
       @include minimize() {
         width: 100%;
+
         padding-left: 0;
 
         text-align: left;
@@ -541,6 +555,7 @@ const carouselStyle = computed(() => {
 
       > .security-title {
         width: 100%;
+
         padding-right: 81.6px;
 
         display: block;
@@ -563,7 +578,9 @@ const carouselStyle = computed(() => {
 
       > .security-description {
         width: 100%;
+
         padding-right: 75px;
+
         margin-top: 36px;
         margin-bottom: 74px;
 
@@ -595,6 +612,7 @@ const carouselStyle = computed(() => {
 
       @include minimize() {
         width: 100%;
+
         margin-left: 0;
 
         display: flex;
@@ -604,12 +622,14 @@ const carouselStyle = computed(() => {
       > .img-security {
         max-width: 515px;
         height: auto;
+
         margin-left: 39px;
 
         transform: translate(-7px, 7px);
 
         @include minimize() {
           width: 386px;
+
           margin-left: 0;
 
           transform: translate(-95px, 30px);
@@ -620,24 +640,29 @@ const carouselStyle = computed(() => {
 
   > .icon-container {
     width: 100%;
+
     padding-top: 83px;
     padding-bottom: 84px;
 
     justify-content: center;
+
     background: linear-gradient(to bottom, #f3f8ff, #e7effa);
 
     @include minimize() {
       padding-top: 32px;
+      padding-bottom: 63.5px;
       padding-left: 6px;
       padding-right: 6px;
-      padding-bottom: 63.5px;
     }
 
     > .icon-title {
       max-width: 840px;
-      margin: 0 auto;
+
       padding-left: 50px;
       padding-right: 50px;
+
+      margin-left: auto;
+      margin-right: auto;
 
       display: block;
 
@@ -655,7 +680,9 @@ const carouselStyle = computed(() => {
     > .icon-item-list-container {
       max-width: 840px;
       width: 100%;
+
       padding: 72px;
+
       margin-top: 72px;
       margin-left: auto;
       margin-right: auto;
@@ -668,6 +695,7 @@ const carouselStyle = computed(() => {
 
       @include minimize() {
         padding: 0;
+
         margin-top: 65px;
 
         box-shadow: none;
@@ -687,7 +715,10 @@ const carouselStyle = computed(() => {
 
         > .icon-item {
           @include minimize() {
-            margin: 20px auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: auto;
           }
         }
       }
@@ -697,7 +728,10 @@ const carouselStyle = computed(() => {
         margin-right: 24px;
 
         @include minimize() {
-          margin: 0 auto;
+          margin-top: 0;
+          margin-bottom: 0;
+          margin-left: auto;
+          margin-right: auto;
         }
       }
     }
@@ -705,6 +739,7 @@ const carouselStyle = computed(() => {
 
   > .story-help-container {
     width: 100%;
+
     padding-top: 84px;
     padding-bottom: 84px;
 
@@ -725,10 +760,12 @@ const carouselStyle = computed(() => {
     > .story-container {
       max-width: 460px;
       width: 100%;
+
       padding: 48px;
       padding-top: 47px;
 
       text-align: left;
+
       border-radius: 50px;
       background: linear-gradient(to bottom, #f7c95f, #fdb235);
 
@@ -749,6 +786,7 @@ const carouselStyle = computed(() => {
 
       > .story-description {
         padding-right: 5.17px;
+
         margin-top: 26px;
         margin-bottom: 60px;
 
@@ -760,21 +798,26 @@ const carouselStyle = computed(() => {
       }
 
       > .story-bt {
-        padding: 16px 20px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-left: 20px;
+        padding-right: 20px;
+
         margin-top: 48px;
 
         color: #ffffff;
         font-size: 15px;
         font-weight: 800;
 
-        background-color: #4335de;
-        border-radius: 50px;
-        box-shadow: none;
         cursor: pointer;
+        box-shadow: none;
+        border-radius: 50px;
+        background-color: #4335de;
 
         > .story-bt-chevron {
           width: 16px;
           height: 11px;
+
           margin-left: 8.67px;
 
           filter: invert(1);
@@ -785,15 +828,18 @@ const carouselStyle = computed(() => {
     > .help-container {
       max-width: 380px;
       width: 100%;
-      padding: 48px;
+
       padding-top: 47px;
+      padding-bottom: 48px;
       padding-left: 120px;
+      padding-right: 48px;
 
       text-align: start;
 
       @include minimize() {
         padding: 48px;
         padding-right: 112px;
+
         margin-top: 20px;
 
         border-radius: 50px;
@@ -810,6 +856,7 @@ const carouselStyle = computed(() => {
 
       > .help-description {
         padding-right: 15.97px;
+
         margin-top: 24px;
         margin-bottom: 48px;
 
@@ -820,21 +867,19 @@ const carouselStyle = computed(() => {
         letter-spacing: 0;
       }
       > .help-bt {
-        margin: 0;
         padding-top: 14px;
         padding-bottom: 14px;
         padding-right: 20px;
 
-        font-size: 15px;
+        margin: 0;
 
-        @include minimize() {
-          margin: 0;
-        }
+        font-size: 15px;
       }
     }
   }
   > .spying-container {
     width: 100%;
+
     padding-top: 84px;
     padding-bottom: 84px;
 
@@ -849,7 +894,9 @@ const carouselStyle = computed(() => {
 
     > .spying-title {
       max-width: 720px;
-      margin: 0 auto;
+
+      margin-left: auto;
+      margin-right: auto;
 
       display: block;
 
@@ -862,6 +909,7 @@ const carouselStyle = computed(() => {
 
     > .spying-description {
       max-width: 720px;
+
       margin-top: 50px;
       margin-bottom: 60px;
       margin-left: auto;
@@ -884,7 +932,8 @@ const carouselStyle = computed(() => {
       margin-right: 24px;
 
       @include minimize() {
-        margin: 0 auto;
+        margin-left: auto;
+        margin-right: auto;
         margin-bottom: 22.5px;
       }
     }
@@ -919,6 +968,7 @@ const carouselStyle = computed(() => {
 
     > .insight-item-list {
       width: 100%;
+
       padding-top: 72px;
       padding-bottom: 72px;
 
@@ -936,14 +986,15 @@ const carouselStyle = computed(() => {
         padding-bottom: 77px;
 
         overflow: visible;
-        //animation: carousel 20s infinite;
       }
 
       > .insight-item {
-        margin: 0 24px;
+        margin-left: 24px;
+        margin-right: 24px;
 
         @include minimize() {
-          margin: 0 12px;
+          margin-left: 12px;
+          margin-right: 12px;
         }
       }
 
@@ -959,7 +1010,8 @@ const carouselStyle = computed(() => {
     }
 
     .insight-bt {
-      margin: 0 auto;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 }

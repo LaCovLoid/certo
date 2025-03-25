@@ -8,10 +8,12 @@
 @use "@/global.scss" as *;
 .text {
   width: fit-content;
+
   padding-top: 16px;
   padding-bottom: 15.5px;
   padding-left: 20px;
   padding-right: 25.59px;
+
   display: inline-block;
 
   font-size: 19px;
@@ -23,8 +25,12 @@
   box-shadow: inset 0 0 0 2px #000000;
 
   @include minimize() {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
     display: block;
-    margin: 20px auto;
   }
 }
 </style>
